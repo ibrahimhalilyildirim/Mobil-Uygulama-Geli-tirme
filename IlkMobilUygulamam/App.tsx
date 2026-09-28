@@ -335,6 +335,8 @@ const student = {
   interests: ["Photographing,", " Running,", " Reading"]
 }
 
+const interestsFinal = student.interests.map(interests => student.interests);
+
 export default function App(){
   return(
     <View style = {styles.container}>
@@ -342,15 +344,18 @@ export default function App(){
         <Text style = {styles.infoCard}>{student.name}</Text>
         <Text style = {styles.infoCard}>{student.department}</Text>
         <Text style = {styles.infoCard}>{student.grade}</Text>
+        <Pressable
+          style={styles.button}
+          onPress={() => console.log("Tuşa basıldı.")}
+        >
+          <Text style = {styles.button}>Tuş</Text>
+        </Pressable>
       </View>
-
-      <View style = {styles.interestsCard}>
-        <Text style = {styles.interestsCard}>{student.interests}</Text>
-      </View>
+        <Text style = {styles.interestsCard}>{interestsFinal}</Text>
     </View>
   );
 }
-
+console.log(interestsFinal);
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ekranın tamamını kaplar.
@@ -370,5 +375,12 @@ const styles = StyleSheet.create({
     padding: 24,
     borderRadius: 16,
     alignItems: "center"
+  },
+  button: {
+    backgroundColor: "rgba(129, 216, 148, 0.2)",
+    paddingVertical: 21,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    marginTop: 18
   }
 });
