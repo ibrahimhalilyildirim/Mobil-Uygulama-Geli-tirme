@@ -34,3 +34,66 @@ column : varsayılan.
 
 null kontrolü örneğin: photo? : .... şeklinde yapılır.
 Ödevi hoca verecek.
+
+
+// Birinci hafta tekrar.
+
+View : Container'dır. İçine başka component'ler alır ve layout'u taşır.
+Text : Metin gösterir. Ekrandaki her metin bir Text içinde olmalıdır.
+Pressable : Dokunulabilir alan oluşturur. Dokunulduğunda tanımlanan function'ı çalıştırır.
+Image : Görsel gösterir. 
+
+React Native HTML üretmez, telefonun kendi UI component'lerini kullanır.
+
+ReactNative camelCase formatında yazılır.
+
+
+// Property için bazı jargonlar.
+
+margin : Component'in dış boşluğu.
+padding : Component'in iç boşluğu.
+borderWidth : Border kalınlığı.
+borderColor : Border rengi.
+borderRadius : Köşe yuvarlaklığı.
+
+border : Çerçeve.
+
+React Native'de component'lerin ekrandaki layout'u "Flexbox" ile belirlenir.
+
+//
+flex
+
+flex: 1 yapılırsa = component. kendisine ayrılan kullanılabilir alanın tamamını doldurur.
+En dıştaki View component'ine flex: 1 vermek, ekranın tümünü kaplamasını sağlar.
+//
+
+//
+flexDirection
+
+Bu property, alt component'lerin hangi yönde sıralanacağnı belirler. React Native'de varsayılan yön "column" yani dikeydir.
+flexDirection: "column"
+flexDirection: "row"
+//
+
+//
+justifyContent
+
+Component'leri ana eksen boyunca hizalar. Hizalanma yönü flexDirection'a göre değişir.
+
+justifyContent değerleri:
+"flex-start" Component'leri başa toplar.(Varsayılan.)
+"center" Ortalar.
+"flex-end" Sona toplar.
+"space-between" İlk ve son component'leri kenarlara yaslar. Boşluğu aralara eşit dağıtır.
+"space-around" Her component'in çevresine eşit boşluk bırakır.
+//
+
+//
+alignItems
+
+"flex-start" Karşı eksende başa hizalar.
+"center" Karşı eksende ortalar.
+"Flex-end" Karşı eksende sona hizalar.
+"stretch" Component'i  karşı eksende genişletir.(Varsayılan.)
+
+

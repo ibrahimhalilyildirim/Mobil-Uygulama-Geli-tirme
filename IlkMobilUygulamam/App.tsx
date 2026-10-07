@@ -1,4 +1,4 @@
-// // Çalıştırmak için npx expo start
+// // Çalıştırmak için cd IlkMobilUygulamam ve ardından npx expo start
 
 
 // import { StyleSheet, Text, View} from 'react-native';
@@ -20,7 +20,7 @@
 //   title: {
 //     fontSize: 25,
 //     color: `#222`,
-//     fontWeight: `bold`
+//     fontWeight: ``
 //   }
 // });
 
@@ -326,61 +326,221 @@
 // Layout'ta FlexBox kullanılmalıdır.
 // margin, padding ve borderRadius property'leri kullanılmalıdır.
 
+// import {Pressable, StyleSheet, Text, View} from "react-native";
+
+// const student = {
+//   name: "İbrahim Halil Yıldırım",
+//   department: "Computer Engineering",
+//   grade: 3,
+//   interests: ["Photographing,", " Running,", " Reading"]
+// }
+
+// const interestsFinal = student.interests.map(interests => student.interests);
+
+// export default function App(){
+//   return(
+//     <View style = {styles.container}>
+//       <View style = {styles.infoCard}>
+//         <Text style = {styles.infoCard}>{student.name}</Text>
+//         <Text style = {styles.infoCard}>{student.department}</Text>
+//         <Text style = {styles.infoCard}>{student.grade}</Text>
+//         <Pressable
+//           style={styles.button}
+//           onPress={() => console.log("Tuşa basıldı.")}
+//         >
+//           <Text style = {styles.button}>Tuş</Text>
+//         </Pressable>
+//       </View>
+//         <Text style = {styles.interestsCard}>{interestsFinal}</Text>
+//     </View>
+//   );
+// }
+// console.log(interestsFinal);
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1, // Ekranın tamamını kaplar.
+//     justifyContent: "center", // Dikeyde merkezler.
+//     alignItems: "center" // Yatayda merkezler.
+//   },
+//   infoCard: {
+//     backgroundColor: "rgb(20, 109, 198)",
+//     width: 280,
+//     padding: 24,
+//     borderRadius: 16,
+//     alignItems: "center"
+//   },
+//   interestsCard: {
+//     backgroundColor: "rgb(229, 157, 40)",
+//     width: 280,
+//     padding: 24,
+//     borderRadius: 16,
+//     alignItems: "center"
+//   },
+//   button: {
+//     backgroundColor: "rgba(129, 216, 148, 0.2)",
+//     paddingVertical: 21,
+//     paddingHorizontal: 10,
+//     borderRadius: 8,
+//     marginTop: 18
+//   }
+// });
+
+
+// Ödev Güncel
+
+// import {Pressable, StyleSheet, Text, View} from "react-native";
+
+// const student = {
+//   name: "İbrahim Halil Yıldırım",
+//   department: "Computer Engineering",
+//   grade: 3
+// };
+
+// export default function App(){
+// return(
+//    <View style = {styles.container}>
+//     <View style = {styles.card}>
+//       <Text style = {styles.name}>{student.name}</Text>
+//       <Text style = {styles.info}>{student.department}</Text>
+//       <Text style = {styles.info}>{student.grade}.Sınıf</Text>
+
+//       <Pressable
+//         style = {styles.button}
+//         onPress = {() => console.log("Profil Görüntülendi.")}
+//       >
+//         <Text style = {styles.buttonText}>Profili Gör</Text>
+//       </Pressable>
+//     </View>
+//    </View>  
+//  );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex:1,
+//     backgroundColor: "#F3F4F6",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+
+//   card: {
+//     backgroundColor: "#FFFFFF",
+//     width: 280,
+//     padding: 24,
+//     borderRadius: 16,
+//     alignItems: "center"
+//   },
+//   name: {
+//     fontSize: 22,
+//     fontWeight: "bold",
+//     color: "#1F2937"
+//   },
+
+//   info: {
+//     fontSize: 15,
+//     color: "#4B5563",
+//     marginTop: 4
+//   },
+
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     paddingVertical: 10,
+//     paddingHorizontal: 20,
+//     borderRadius: 8,
+//     marginTop: 16
+//   },
+
+//   buttonText: {
+//     color: "#FFFFFF",
+//     fontSize: 15,
+//     fontWeight: "bold"
+//   }
+// });
+
+// const oldItems = [1,2,3];
+// const newItems = [...oldItems,4];
+// console.log(newItems);
+
+// Ödev Güncel Güncel.
+
 import {Pressable, StyleSheet, Text, View} from "react-native";
 
 const student = {
   name: "İbrahim Halil Yıldırım",
   department: "Computer Engineering",
   grade: 3,
-  interests: ["Photographing,", " Running,", " Reading"]
-}
+};
 
-const interestsFinal = student.interests.map(interests => student.interests);
+const interests = [
+  "Running",
+  "Photographing",
+  "Developing"
+]
 
 export default function App(){
-  return(
+  return (
     <View style = {styles.container}>
-      <View style = {styles.infoCard}>
-        <Text style = {styles.infoCard}>{student.name}</Text>
-        <Text style = {styles.infoCard}>{student.department}</Text>
-        <Text style = {styles.infoCard}>{student.grade}</Text>
+      <View style = {styles.card}>
+        <Text style = {styles.name}>{student.name}</Text>
+        <Text style = {styles.department}>{student.department}</Text>
+        <Text style = {styles.grade}>{student.grade}</Text>
+
         <Pressable
-          style={styles.button}
-          onPress={() => console.log("Tuşa basıldı.")}
+          style = {styles.button}
+          onPress = {() => console.log("Tuşa basıldı.")}
         >
-          <Text style = {styles.button}>Tuş</Text>
+          <Text style = {styles.buttonText}>Kontrol Tuşu</Text>
         </Pressable>
       </View>
-        <Text style = {styles.interestsCard}>{interestsFinal}</Text>
     </View>
   );
 }
-console.log(interestsFinal);
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Ekranın tamamını kaplar.
-    justifyContent: "center", // Dikeyde merkezler.
-    alignItems: "center" // Yatayda merkezler.
+    flex:1,
+    backgroundColor: "#F3F4F6",
+    justifyContent: "center",
+    alignItems: "center"
   },
-  infoCard: {
-    backgroundColor: "rgb(20, 109, 198)",
+
+  card: {
+    backgroundColor: "rgba(23, 89, 219, 0.2)",
     width: 280,
     padding: 24,
     borderRadius: 16,
     alignItems: "center"
   },
-  interestsCard: {
-    backgroundColor: "rgb(229, 157, 40)",
-    width: 280,
-    padding: 24,
-    borderRadius: 16,
-    alignItems: "center"
+
+  name: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "rgb(64, 0, 128)"
   },
+
+  department: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "rgb(177, 157, 0)"
+  },
+
+  grade: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "rgba(30, 108, 148, 0.85)"
+  },
+
   button: {
-    backgroundColor: "rgba(129, 216, 148, 0.2)",
-    paddingVertical: 21,
-    paddingHorizontal: 10,
-    borderRadius: 8,
-    marginTop: 18
+    backgroundColor: "#7B1E3A",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 50,
+    marginTop: 20
+  },
+
+  buttonText: {
+    color: "rgba(19, 226, 171, 0.61)",
+    fontSize: 15,
+    fontWeight: "bold"
   }
 });
