@@ -1,0 +1,36 @@
+//// HAFTA 1 Tekrarı (Hafta 2)
+Tekler -> Saat 10.00'da.
+Çiftler -> Saat 11.30'da.
+
+İnternet programcılığı dersinde React kullanılacak.
+
+JavaScript'te yazılan her kod TypeScript'de derlenebilir.
+
+XCode-Simulator -> iOS cihaz emülatörü.
+
+=> array function anlamına gelir. Fonksiyonların kısa yazımıdır.
+
+Stil -> StyleSheet ve FlexBox(?)
+
+const bir değişkene yeniden atama yapılamaz.
+
+object bir nesnedir.(Python'da dictionary olarak geçiyormuş.)
+
+Bir array'in içerisinde object'ler bulunabilir.
+
+NoSQL'de veriler düzenli olmayabilir. Verileri buluttan çekerken object formatında çekeceğiz.
+
+object (KEY-VALUE)
+
+ ===  Hem içeriği kontrol eder hem de değişken türünü kontrol eder. Her ikisinin de doğru olması gerekir true dönmesi için.
+
+Arrow function : Normal fonksiyon ancak daha az satır kullanarak.
+
+<View> bir nesnedir.
+
+column : varsayılan.
+
+///// HAFTA 2
+
+null kontrolü örneğin: photo? : .... şeklinde yapılır.
+Ödevi hoca verecek.
