@@ -463,33 +463,269 @@
 
 // Ödev Güncel Güncel.
 
-import {Pressable, StyleSheet, Text, View} from "react-native";
+// import {Pressable, StyleSheet, Text, View} from "react-native";
 
-const student = {
-  name: "İbrahim Halil Yıldırım",
-  department: "Computer Engineering",
-  grade: 3,
-};
+// const student = {
+//   name: "İbrahim Halil Yıldırım",
+//   department: "Computer Engineering",
+//   grade: 3,
+// };
 
-const interests = [
-  "Running",
-  "Photographing",
-  "Developing"
-]
+// const interests = [
+//   "Photographing",
+//   "Running",
+//   "Developing"
+// ]
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.card}>
+//         <Text style = {styles.name}>{student.name}</Text>
+//         <Text style = {styles.department}>{student.department}</Text>
+//         <Text style = {styles.grade}>{student.grade}</Text>
+
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => console.log("Tuşa basıldı.")}
+//         >
+//           <Text style = {styles.buttonText}>Kontrol Tuşu</Text>
+//         </Pressable>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex:1,
+//     backgroundColor: "#F3F4F6",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+
+//   card: {
+//     backgroundColor: "rgba(23, 89, 219, 0.2)",
+//     width: 280,
+//     padding: 24,
+//     borderRadius: 16,
+//     alignItems: "center"
+//   },
+
+//   name: {
+//     fontSize: 22,
+//     fontWeight: "bold",
+//     color: "rgb(64, 0, 128)"
+//   },
+
+//   department: {
+//     fontSize: 22,
+//     fontWeight: "bold",
+//     color: "rgb(177, 157, 0)"
+//   },
+
+//   grade: {
+//     fontSize: 22,
+//     fontWeight: "bold",
+//     color: "rgba(30, 108, 148, 0.85)"
+//   },
+
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     paddingVertical: 10,
+//     paddingHorizontal: 20,
+//     borderRadius: 50,
+//     marginTop: 20
+//   },
+
+//   buttonText: {
+//     color: "rgba(19, 226, 171, 0.61)",
+//     fontSize: 15,
+//     fontWeight: "bold"
+//   }
+// });
+
+// İlk State Uygulaması
+
+// import {Pressable, StyleSheet, Text, View} from "react-native";
+// import {useState} from "react";
+// export default function App(){
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <View style = {styles.container}>
+//       <Text style = {styles.count}>{count}</Text>
+//     <View style = {{flexDirection: "row"}}>
+//        <Pressable
+//         style = {styles.button}
+//         onPress = {() => setCount(count + 1)}
+//       >
+//         <Text style = {styles.buttonText}>Artır</Text>
+//       </Pressable>
+
+//       <Pressable
+//         style = {styles.button}
+//         onPress = {() => setCount(count - 1)}
+//       >
+//         <Text style = {styles.buttonText}>Azalt</Text>
+//       </Pressable>
+//     </View>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   count: {
+//     fontSize: 40,
+//     marginBottom: 20,
+//   },
+//   button: {
+//     backgroundColor: "yellow",
+//     padding: 15,
+//     borderRadius: 35,
+//   },
+//   buttonText: {
+//     color: "orange",
+//     fontSize: 18
+//   }
+// })
+
+// UYGULAMA Tekrar Kullanılabilir Öğrenci Kartı
+
+// import {StyleSheet, Text, View} from "react-native";
+
+// interface Student {
+//   id: number;
+//   name: string;
+//   department: string;
+//   grade: number
+// }
+
+// interface StudentCardProps {
+//   name: string;
+//   department: string;
+//   grade: number;
+// }
+
+// const students: Student[] = [
+//   {
+//     id: 1,
+//     name: "Ali Yıldz",
+//     department: "Bilgisayar Mühendisliği",
+//     grade: 2
+//   },
+//   {
+//     id: 2,
+//     name: "Ayşe Demir",
+//     department: "Bilgisayar Mühendisliği",
+//     grade: 3
+//   },
+//   {
+//     id: 3,
+//     name: "Mehmet Kaya",
+//     department: "Yazılım Mühendisliği",
+//     grade: 1
+//   }
+// ];
+
+// function StudentCard({name, department, grade} : StudentCardProps) {
+//   return (
+//     <View style = {styles.card}>
+//       <Text style = {styles.name}>{name}</Text>
+//       <Text style = {styles.info}>{department}</Text>
+//       <Text style = {styles.info}>{grade}. Sınıf</Text>
+//     </View>
+//   );
+// }
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <Text style = {styles.title}>Öğrenci Listesi</Text>
+
+//       {students.map(student => (
+//         <StudentCard
+//           key = {student.id}
+//           name = {student.name}
+//           department = {student.department}
+//           grade = {student.grade}
+//         />
+//       ))}
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F3F4F6",
+//     paddingTop: 60,
+//     alignItems: "center"
+//   },
+//   title: {
+//     fontSize: 20,
+//     fontWeight: "bold",
+//     color: "#1F2937",
+//     marginBottom: 16
+//   },
+//   card: {
+//     backgroundColor: "#FFFFFF",
+//     width: 300,
+//     padding: 16,
+//     borderRadius: 12,
+//     marginBottom: 12
+//   },
+//   name: {
+//     fontSize: 17,
+//     fontWeight: "bold",
+//     color: "#7B1E3A"
+//   },
+//   info: {
+//     fontSize: 14,
+//     color: "#4B5563",
+//     marginTop: 3
+//   }
+// });
+
+
+// UYGULAMA Basit Sayaç
+
+import {useState} from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function App(){
+  const [count, setCount] = useState(0);
+
   return (
     <View style = {styles.container}>
-      <View style = {styles.card}>
-        <Text style = {styles.name}>{student.name}</Text>
-        <Text style = {styles.department}>{student.department}</Text>
-        <Text style = {styles.grade}>{student.grade}</Text>
+      <Text style = {styles.label}>Sayaç</Text>
+      <Text style = {styles.count}>{count}</Text>
+
+      <View style = {styles.row}>
+        <Pressable
+          style = {styles.button}
+          onPress = {() => setCount(count - 1)}
+        >
+          <Text style = {styles.buttonText}>-</Text>
+        </Pressable>
 
         <Pressable
           style = {styles.button}
-          onPress = {() => console.log("Tuşa basıldı.")}
+          onPress = {() => setCount(0)}
         >
-          <Text style = {styles.buttonText}>Kontrol Tuşu</Text>
+          <Text style = {styles.buttonText}>Sıfırla</Text>
+        </Pressable>
+
+        <Pressable
+          style = {styles.button}
+          onPress = {() => setCount(count + 1)}
+        >
+          <Text style = {styles.buttonText}>+</Text>
         </Pressable>
       </View>
     </View>
@@ -498,49 +734,35 @@ export default function App(){
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     backgroundColor: "#F3F4F6",
     justifyContent: "center",
     alignItems: "center"
   },
-
-  card: {
-    backgroundColor: "rgba(23, 89, 219, 0.2)",
-    width: 280,
-    padding: 24,
-    borderRadius: 16,
-    alignItems: "center"
+  label: {
+    fontSize: 16,
+    color: "#4B5563"
   },
-
-  name: {
-    fontSize: 22,
+  count: {
+    fontSize: 16,
     fontWeight: "bold",
-    color: "rgb(64, 0, 128)"
+    color: "#7B1E3A",
+    marginVertical: 12
   },
-
-  department: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "rgb(177, 157, 0)"
+  row: {
+    flexDirection: "row",
+    marginTop: 8
   },
-
-  grade: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "rgba(30, 108, 148, 0.85)"
-  },
-
   button: {
     backgroundColor: "#7B1E3A",
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 50,
-    marginTop: 20
+    borderRadius: 8,
+    marginHorizontal: 6
   },
-
   buttonText: {
-    color: "rgba(19, 226, 171, 0.61)",
-    fontSize: 15,
+    color: "#FFFFF",
+    fontSize: 16,
     fontWeight: "bold"
   }
 });

@@ -97,3 +97,291 @@ alignItems
 "stretch" Component'i  karşı eksende genişletir.(Varsayılan.)
 
 
+ // Hafta 2
+
+ TypeScript: JavaScript'in üzerine bir "type system" eklenerek oluşturulmuş bir dildir. Yeni ve bağımsız bir dil değildir.
+ JavaScript'in tamamını içerir ve ona tip bilgisini ekler.
+
+TypeScript kodu telefonda doğrudan çalışmaz. Proje derlenirken tip bilgileri kaldırılır ve geriye saf JavaScript kalır.
+Yani tipler programın çalışmasna değil, biz kod yazarken hata yapmamamıza hizmet eder.
+
+TypeScript faydaları:
+
+- Hataları daha erken fark etme.
+- Kodun ne beklediğini açıkça gösterme.
+- Editör desteği.
+- Projede daha fazla okunabilirlik.
+- Refactoring kolaylığı. / Bir propert'nin adını değiştirdiğinizde onu kullanan bütün yerler hata verir; hiçbirini atlamazsınız.
+
+<> Fonksiyon imzası: Fonksiyon adı + Parametre listesi + Dönüş türü (Her dil için geçerli değil.)
+
+JavaScript ve TypeScript karşılaştırması:
+
+const age = 21; JavaScript
+const age: number = 21; TypeScript
+
+const name = "İbrahim"; JavaScript
+const name: string = "İbrahim"; TypeScript
+
+// Type Inference
+
+const name = "İbrahim"; bu ifadede name değişkeninin türünü yazmadık. Bunu TypeScript kendisi anlıyor.
+Bu duruma Type Inference deniyor yani Tip çıkarımı.
+
+// JavaScript'te tam sayılar veya ondalıklı sayıları için farklı tip bulunmaz. İkisi de "number" ile tanımlanır.
+const credit: number = 3;
+const average: number = 2.75;
+
+// array: Bir array'in tipi, içindeki elementlerin tipi ve ardından köşeli parantez ile yazılır.
+
+const technologies: string[] = [
+    "React Native",
+    "Expo",
+    "TypeScript"
+];
+Yukarıdaki örnek bir string array'idir.
+
+string[] = Array<string>
+number[] = Array<number> Derste daha çok ilk seçenek kullanılacak.
+
+// Type safety(Tip güvenliği): Bir değerin ancak kendi tipine uygun bir yerde kullanılıp kullanılmadığını denetler.
+Bu denetleme henüz kodu yazarken gerçekleşir ve bu sayede ortada bir tip güvensizliği varsa kod çalışmadan hata verir.
+Bu da uygulamanın içinde fark edilmeden bulunacak hataları en baştan ortadan kaldırır.
+
+// Interface Tanım: Interface, bir object'in hangi property'lere sahip olacağını ve her property'nin tipinin ne olduğunu tanımlar.
+Tanım iki: Interface, bir veri yapısının sahip olması gereken property'leri ve bu property'lerin tiplerini tanımlayan bir sözleşmedir.
+Kendisi veri tutmaz; yalnızca verinin nasıl görünmesi gerektiğini belirtir.
+
+interface Student {
+    name: string;   // Student interface'i
+    grade: number;
+}
+
+Interface tanımlandıktan sonra bir variable'ın tipi olarak kullanılır.
+
+const student: Student = {
+    name: "Ali",  // Interface'in kullanımı
+    grade: 3
+};
+
+// Interface adları büyük harfle başlar ve tekil yazılır. Property'lerin arası noktalı virgülle ayrılır.
+
+// Eksik veya Yanlış Tipteki Property Hataları
+Interface'in asıl yararı buralarda görünür.
+Bir object'in herhangi bir property'si yazılmazsa veya yazılsa da yanlış tipte yazılırsa hata alınır.
+
+Ancak buna rağmen isteğe bağlı property'ler olabilir.
+// Optional Property
+interface Student{
+    name: string;
+    grade: number;   // ? işareti sayesinde fotoğraf isteğe bağlı hale getirilmiştir.
+    photo?: string;
+}
+
+const student1: Student = {
+    name: "Ali",
+    grade: 3,
+    photo: "ali.png"
+}                             // Bu iki object'te kabul edilir, herhangi bir hata alınmaz.
+const student2: Student = {
+    name: "Ayşe",
+    grade: 2
+}
+
+// Object Array'leri 
+Mobil uygulamalarda en sık ihtiyaç duyulan yapı budur: aynı biçimde birçok kayıt. Önce interface tanımlanır, ardından
+o tipteki object'lerden oluşan bir array oluşturulur.
+
+interface Student {
+    id: number;
+    name: string;
+    department: string;
+}
+
+const students: Student[] = [
+    {
+        id: 1,
+        name: "Ali",
+        department: "Bilgisayar Mühendisliği"
+    },
+    {
+        id: 2,
+        name: "Ayşe",
+        department: "Bilgisayar Mühendisliği"
+    }
+];
+
+// Student[] tipi, her elementi Student olan bir array anlamına gelir.
+
+ TypeScript'te bir veri yapısını tanımlamanın iki yolu vardır. Biri bildiğimiz interface diğeri ise type ile yazılan biçimdir.
+ Biz derste daha çok interface kullanacağız.
+
+ interface Course {
+    name: string;
+    credit: number;
+ }
+
+ type Course = {
+    name: string;
+    credit: number;
+ };
+
+// Ekranda 3 öğrencinin adının bulunduğu üç blok yazılabilir belki ama bu sayı 200'e çıktığında bu o kadar da mümkün olmaz.
+Bunun için gerekli yapıyı bir kez tanımlarız ve ona bir ad veririz. Bu, React'e component ile yapılır.
+
+View, Text, Pressable birer component'tir. Bu hafta kendi component'lerimizi yapacağız.
+
+function Welcome() {
+    return (
+        <View>
+            <Text>Mobil Uygulama Geliştirme</Text>
+        <View>
+    );
+}
+
+// JSX = JavaScript XML
+
+export default function App(){
+return (
+    <View style = { styles.container}>
+        <Welcome />
+        <Welcome />
+    </View>
+);
+}
+
+// Component adları büyük harfle başlar.
+
+App, uygulamanın en dıştaki component'idir. export default ifadesi, bu component'in uygulamanın başlangıç noktası olarak dışarıya açıldığını belirtir.
+
+// Yazdığımız component'e dışarıdan veri verebilmek için React'te props'lar(property) kullanılır.
+
+interface StudentCardProps {
+    name: string;
+    department: string;
+}
+
+function StudentCard({
+    name,
+    department
+}; 
+
+StudentCardProps) {
+    return (
+        <View style = {styles.card}>
+        <Text style = {styles.name}>{name}</Text>
+     </View>
+    );
+}
+
+<StudentCard 
+    name: "Ali"
+    department = "Bilgisayar Mühendisliği"
+/>
+
+<StudentCard
+    name = "Ayşe"
+    department = "Yazılım Mühendisliği"
+/>
+
+// Props Destructuring
+
+// Props'u component içinde iki farklı biçimde kullanabiliriz. Birinci biçimde bütün props'lar tek bir object olarak
+alınır ve property'lere o object üzerinden erişilir.
+
+function StudentCard(props: StudentCardProps){
+    return(
+        <View>
+            <Text>{props.name}</Text>
+            <Text>{props.department}</Text>
+        </View>
+    );
+}
+
+
+// İkinci biçimde Hafta 1'de gördüğümüz destructuring kullanılır. İhtiyaç duyulan property'ler süslü parantez içinde doğrudan ayrıştırılır.
+
+function StudentCard({
+    name,
+    department
+}: StudentCardProps) {
+    return (
+        <View>                    // Bu yazım daha çok kullanılır. 
+            <Text>{name}</Text>
+            <Text>{department}</Text>
+        </View>
+    );
+}
+
+//// Önemli Kod ////
+
+interface Student {
+    id: number;
+    name: string;
+    department: string;
+}
+const students: Student[] =[
+    {
+        id: 1,
+        name: "Ali",
+        department: "Bilgisayar Mühendisliği"
+    },
+
+    {
+        id: 2,
+        name: "Ayşe",
+        department: "Bilgisayar Mühendisliği"
+    }
+];
+
+// Bu array'i kart listesine dönüştürmek için map() kullanırız. JSX içinde JavaScript ifadesi yazdığımız için
+süslü parantez gerekir.
+
+{students.map(student => (
+    <StudentCard
+        key = {student.id}
+        name = {student.name}
+        department = {student.department}
+    />
+))}
+
+map(): array'in her element'i için bir şey üretir. Hafta birde map() ile sayı veya metin üretirken artık component üretiyoruz.
+
+Tanım key: key, bir liste içindeki her elemente verilen benzersiz değerdir. React'in listedeki elementleri birbirinden ayırt etmesine yardım eder.
+
+key için verinin kendi benzersiz alanı kullanılır. Genellikle bu id olur.
+
+key verilmeden de uygulama çalışır ancak uzun vadede sorunlara yol açar.
+
+Tanım state: State, bir component'in zaman içerisinde değişebilen verisidir. Component kendi state'ini oluşturur,
+okur ve günceller. State değiştiğinde component yeniden render edilir ve ekranda yeni değer görünür.
+
+State oluşturmak için useState function'ı gereklidir. react paketinden import edilir.
+import {useState} from "react";
+
+
+State şu satırla oluşturulabilir.
+
+const [count, setCount] = useState(0);
+
+// Burada useState React'in state oluşturmak için sağladığı hook'tur.
+
+Tanım hook: Hook, React'in component'lere ek yetenek kazandıran function'larıdır ve adları use ile başlar.
+setCount zorunlu değildir ama genel kabul görür. setLikes, setFavorite vb.
+
+// Bir function'ın sonunda () varsa bu o function'ın hemen çağırılacağı anlamına gelir.
+Yani bir buton bir function'ı tetikleyecekse () kullanılmaz ki sadece butona basıldığı zaman funtion çağırılsın.
+
+
+// State'e göre ekranda farklı arayüzler gösterme işlemine Conditional Rendering denir.
+
+const [loggedIn, setLoggedIn] = useState(false);
+
+{loggedIn ? ( ?  Koşul doğruysa
+              :  Koşul yanlışsa
+    <Text>Hoş geldiniz.</Text>
+): (
+    <Text>Giriş yapınız.</Text>
+)}
+
+ 
