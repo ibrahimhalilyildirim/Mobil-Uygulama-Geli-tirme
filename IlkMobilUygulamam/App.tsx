@@ -771,72 +771,462 @@
 
 // Bir component'i birden çok kez kullandığımızda ne olur? Her kullanım kendi state'ine sahip olur. Bunu bir beğeni butonu ile görelim.
 
-import {Pressable, StyleSheet, Text, View} from "react-native";
-import {useState} from "react";
+// import {Pressable, StyleSheet, Text, View} from "react-native";
+// import {useState} from "react";
 
-interface PostCardProps {
-  title: string;
-}
+// interface PostCardProps {
+//   title: string;
+// }
 
-function PostCard({title} : PostCardProps){
-  const [likes, setLikes] = useState(0);
+// function PostCard({title} : PostCardProps){
+//   const [likes, setLikes] = useState(0);
 
-  return (
-    <View style = {styles.card}>
+//   return (
+//     <View style = {styles.card}>
 
-      <Text style = {styles.cardTitle}>{title}</Text>
-      <Text style = {styles.likeText}>Beğeni: {likes}</Text>
+//       <Text style = {styles.cardTitle}>{title}</Text>
+//       <Text style = {styles.likeText}>Beğeni: {likes}</Text>
 
-      <Pressable
+//       <Pressable
 
-        style = {styles.button}
-        onPress = {() => setLikes(likes + 1)}
-        >
-        <Text style = {styles.buttonText}>Beğen</Text>
-        </Pressable>
-    </View>
-  );
-}
+//         style = {styles.button}
+//         onPress = {() => setLikes(likes + 1)}
+//         >
+//         <Text style = {styles.buttonText}>Beğen</Text>
+//         </Pressable>
+//     </View>
+//   );
+// }
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <PostCard title = "React Native" /> 
+// {/* Burada PostCard component'i iki kez kullanılıyor ancak her biri kendi state'ine sahip. */}
+//       <PostCard title = "TypeScript" />
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F3F4F6",
+//     justifyContent: "center",
+//   },
+//   card: {
+//    backgroundColor: "rgba(121, 147, 16, 0.66)",
+//    width: 300,
+//    padding: 16,
+//    borderRadius: 12,
+//    marginBottom: 12
+//   },
+//   cardTitle: {
+//     fontWeight: "bold"
+//   },
+//   button: {
+//     backgroundColor:  "rgba(0, 112, 224, 0.79)",
+//     paddingVertical: 13,
+//     paddingHorizontal: 25,
+//     borderRadius: 2,
+//     marginHorizontal: 6
+//   },
+//   buttonText: {
+//     color: "#FFFF",
+//     fontSize: 16,
+//     fontWeight: "bold"
+//   },
+//   likeText: {
+//     backgroundColor: "rgba(209, 82, 18, 0.89)"
+//   }
+// })
+
+// // UYGULAMA Ders Kartları Uygulaması 
+// import{Pressable, View, Text, StyleSheet} from "react-native";
+// import {useState} from "react";
+
+// interface Course {
+//   id: number;
+//   name: string;
+//   instructor: string;
+//   credit: number;
+// }
+
+// function CourseCard({name, instructor, credit} : CourseCardProps) {
+//   return (
+//     <View>
+//       <Text style = {styles.name}>{name}</Text>
+//       <Text style = {styles.info}>{instructor}</Text>
+//       <Text style = {styles.info}>{credit}</Text>
+//     </View>
+//   );
+// }
+// interface CourseCardProps {
+//   name: string;
+//   instructor: string,
+//   credit: number
+// }
+
+// const courses : Course[] = [
+//   {
+//     id: 1,
+//     name: "Veri Yapıları",
+//     instructor: "Fatih Kocamaz",
+//     credit: 6 
+//   },
+//   {
+//     id: 2,
+//     name: "Veri Tabanı Yönetim Sistemleri",
+//     instructor: "Arif Aydın",
+//     credit: 7
+//   },
+//   {
+//     id: 3,
+//     name: "Otomata",
+//     instructor: "Abdullah Ateş",
+//     credit: 18
+//   }
+// ]
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <Text style = {styles.baseTitle}> Derslerim </Text>
+    
+//       {courses.map(course => (
+//         <CourseCard
+
+//       ))}
+
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F3F4F6",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   info: {
+//     backgroundColor: "rgba(208, 151, 37, 0.81)",
+//     width: 300,
+//     padding: 16,
+//     borderRadius: 12,
+//     marginBottom: 12
+//   },
+//   name: {
+//     color: "rgb(8, 103, 198)",
+//     fontSize: 15,
+//     fontWeight: "bold"
+//   },
+//   baseTitle: {
+//     color: "rgba(125, 23, 227, 0.8)",
+//     fontSize: 30,
+//     fontWeight : "bold"
+//   } 
+// })
+
+// // Yetersiz hissedildiğinden dolaryı hafta 1 ve hafta 2 tekrarı.
+
+// import {StyleSheet, Text, View} from "react-native";
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <Text>Hafta 1 tekrarı.</Text>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,  // container içinde boşluğu ne kadar dolduracağını belirler.
+//     justifyContent: "center", // Ögelerin yatayda nasıl hizalanacağıni belirler.
+//     alignItems: "center" // Ögelerin dikeyde nasıl hizalanacağını beliler. 
+//   }
+// });
+
+// map(), bir array'in her elementini dönüştürerek yeni bir array oluşturur. Özgün array değişmez.
+
+// filter(), bir koşulu sağlayan elementlerden yeni bir array oluşturur.
+
+// find(), koşulu sağlayan ilk elementi döndürür.
+
+// Karşılaştırmalarda == değil === kullan. Hem değeri hem de tipi kontrol eder.
+
+// Destructuring
+
+// Border : Kenar.
+
+// margin : Component'in dış boşluğu.
+// padding : Component'in iç boşluğu.
+
+// React Native'de component'lerin ekrandaki layout'u FlexBox ile belirlenir.
+// flex, flexDirection, justifyContent, alignItems
+
+// UYGULAMA Yatay Kart Örneği
+
+// import {StyleSheet, View, Text} from "react-native";
+
+// const technologies = ["React Native", "Expo", "TypeScript"];
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.row}>
+//         {technologies.map(tech => (
+//           <View key = {tech} style = {styles.box}>
+//             <Text style = {styles.boxText}>{tech}</Text>
+//           </View>
+//         ))}
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   row: {
+//     flexDirection: "row",
+//     justifyContent: "space-around"
+//   },
+//   box: {
+//     backgroundColor: "#E5E7EB",
+//     paddingVertical: 14,
+//     paddingHorizontal: 10,
+//     borderRadius: 8,
+//     width: 100,
+//     alignItems: "center"
+//   },
+//   boxText: {
+//     fontSize: 13,
+//     color: "#1F2937"
+//   }
+// });
+
+// // UYGULAMA İlk Mobil Profil Kartı
+
+// import {Pressable, StyleSheet, Text, View} from "react-native";
+
+// const student = {
+//   name: "İbrahim Halil Yıldırım",
+//   department : "Bilgisayar Mühendsiliği",
+//   grade: 3
+// };
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.card}>
+//         <Text style = {styles.name}>{student.name}</Text>
+//         <Text style = {styles.info}>{student.department}</Text>
+//         <Text style = {styles.info}>{student.grade}</Text>
+
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => console.log("Profil Görüntülendi.")}
+//         >
+//           <Text style = {styles.buttonText}>Profili Gör</Text>
+//         </Pressable>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F3F",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   card: {
+//     backgroundColor: "#2342",
+//     width: 280,
+//     padding: 24,
+//     borderRadius: 16,
+//     alignItems: "center"
+//   },
+//   name: {
+//     fontSize: 22,
+//     fontWeight: "bold",
+//     color: "#1F2937"
+//   },
+//   info: {
+//     fontSize: 15,
+//     color: "#4B5563",
+//     marginTop: 4
+//   },
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     paddingVertical: 10,
+//     paddingHorizontal: 20,
+//     borderRadius: 8,
+//     marginTop: 16
+//   },
+//   buttonText: {
+//     color: "#FFFFFF",
+//     fontSize: 15,
+//     fontWeight: "bold"
+//   }
+// });
+
+// // ÇÖZÜMLÜ UYGULAMA Uzunluğu beş karakterden büyük kelimeleri kartlarda gösteren uygulama.
+
+// const technologies = [
+//   "React", "Expo", "TypeScript", "JavaScript", "Node"
+// ];
+
+// // Çözümde filter(), map() kullanılmalı.
+// import {StyleSheet,Pressable, View, Text} from "react-native";
+
+// const filteredTechnologies = technologies.filter(tech =>
+//   tech.length > 5); // diziyi filtreliyoruz ve karakter uzunluğu beşten büyük olanları yeni bir diziye ekliyoruz.
+
+// console.log({technologies});
+// console.log({filteredTechnologies});
+
+// export default function App(){
+//   return(
+//     <View style = {styles.container}>
+//       <Text style = {styles.titleText}>Karakter Sayısı Beşten Büyük Olanlar</Text>
+//       <Text style = {styles.text}>{filteredTechnologies}</Text>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     backgroundColor: "#00ba66d4"
+//   },
+//   titleText: {
+//     color: "blue",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     fontSize: 20,
+//     fontWeight: "bold"
+//   },
+//   text: {
+//   color: "black",
+//   fontSize: 15,
+//   justifyContent: "space-around"
+//   }
+// })
+
+// // ALIŞTIRMA KOLAY
+
+// import {View, Text, StyleSheet} from "react-native";
+
+// const student = {
+//   name: "İbrahim Halil Yıldırım",
+//   department: "Computer Engineering",
+//   grade: 3
+// }
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.card}>
+//         <Text style = {styles.text}>{student.name}</Text>
+//         <Text style = {styles.text}>{student.department}</Text>
+//         <Text style = {styles.text}>{student.grade}</Text>
+//       </View>
+//     </View>
+//   )
+// }
+
+
+// // container, card, text
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     backgroundColor: "rgb(16, 98, 181)"
+//   },
+//   card: {
+//     alignItems: "center",
+//     justifyContent: "center",
+//     width: 300,
+//     height: 150,
+//     backgroundColor: "#9aadc1",
+//     borderRadius: 20 
+//   },
+//   text: {
+//     fontSize: 15,
+//     fontWeight: "bold",
+//     color: "black"
+//   }
+// })
+
+// ALIŞTIRMA KOLAY
+
+import {StyleSheet, View} from "react-native";
 
 export default function App(){
-  return (
+  return(
     <View style = {styles.container}>
-      <PostCard title = "React Native" /> 
-{/* Burada PostCard component'i iki kez kullanılıyor ancak her biri kendi state'ine sahip. */}
-      <PostCard title = "TypeScript" />
+      <View style = {styles.generalZone}>
+        <View style = {styles.boxOne}></View>
+        <View style = {styles.boxTwo}></View>
+        <View style = {styles.boxThree}></View>
+      </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F3F4F6",
     justifyContent: "center",
+    alignItems: "center",
   },
-  card: {
-   backgroundColor: "rgba(121, 147, 16, 0.66)",
-   width: 300,
-   padding: 16,
-   borderRadius: 12,
-   marginBottom: 12
+  generalZone: {
+    alignItems: "center",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    width: 300,
+    height: 200,
+    backgroundColor: "rgba(117, 53, 103, 0.82)"
   },
-  cardTitle: {
-    fontWeight: "bold"
+  boxOne: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: 75,
+    height: 75,
+    backgroundColor: "yellow"
   },
-  button: {
-    backgroundColor:  "rgba(0, 112, 224, 0.79)",
-    paddingVertical: 13,
-    paddingHorizontal: 25,
-    borderRadius: 2,
-    marginHorizontal: 6
+  boxTwo: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: 75,
+    height: 75,
+    backgroundColor: "blue"
   },
-  buttonText: {
-    color: "#FFFF",
-    fontSize: 16,
-    fontWeight: "bold"
-  },
-  likeText: {
-    backgroundColor: "rgba(209, 82, 18, 0.89)"
+  boxThree: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: 75,
+    height: 75,
+    backgroundColor: "red"
   }
-})
+});
+
+// ALIŞTIRMA KOLAY
+
+// odd: tek, even: çift
+
+const numberArray = [3,8,12,5,7,20];
+
+const evenNumbers = numberArray.filter(number => number % 2 === 0);
+
+console.log(evenNumbers);
