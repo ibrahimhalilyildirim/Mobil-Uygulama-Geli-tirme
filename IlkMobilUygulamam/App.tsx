@@ -1,5 +1,7 @@
 // // Çalıştırmak için cd IlkMobilUygulamam ve ardından npx expo start
 
+// import { Pressable } from "react-native";
+
 
 // import { StyleSheet, Text, View} from 'react-native';
 
@@ -693,41 +695,115 @@
 // });
 
 
-// UYGULAMA Basit Sayaç
+// // UYGULAMA Basit Sayaç
 
+// import {useState} from "react";
+// import { Pressable, StyleSheet, Text, View } from "react-native";
+
+// export default function App(){
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <View style = {styles.container}>
+//       <Text style = {styles.label}>Sayaç</Text>
+//       <Text style = {styles.count}>{count}</Text>
+
+//       <View style = {styles.row}>
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => setCount(count - 1)}
+//         >
+//           <Text style = {styles.buttonText}>-</Text>
+//         </Pressable>
+
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => setCount(0)}
+//         >
+//           <Text style = {styles.buttonText}>Sıfırla</Text>
+//         </Pressable>
+
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => setCount(count + 1)}
+//         >
+//           <Text style = {styles.buttonText}>+</Text>
+//         </Pressable>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F3F4F6",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   label: {
+//     fontSize: 16,
+//     color: "#4B5563"
+//   },
+//   count: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "#7B1E3A",
+//     marginVertical: 12
+//   },
+//   row: {
+//     flexDirection: "row",
+//     marginTop: 8
+//   },
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     paddingVertical: 12,
+//     paddingHorizontal: 20,
+//     borderRadius: 8,
+//     marginHorizontal: 6
+//   },
+//   buttonText: {
+//     color: "#FFFFF",
+//     fontSize: 16,
+//     fontWeight: "bold"
+//   }
+// });
+
+// Bir component'i birden çok kez kullandığımızda ne olur? Her kullanım kendi state'ine sahip olur. Bunu bir beğeni butonu ile görelim.
+
+import {Pressable, StyleSheet, Text, View} from "react-native";
 import {useState} from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function App(){
-  const [count, setCount] = useState(0);
+interface PostCardProps {
+  title: string;
+}
+
+function PostCard({title} : PostCardProps){
+  const [likes, setLikes] = useState(0);
 
   return (
+    <View style = {styles.card}>
+
+      <Text style = {styles.cardTitle}>{title}</Text>
+      <Text style = {styles.likeText}>Beğeni: {likes}</Text>
+
+      <Pressable
+
+        style = {styles.button}
+        onPress = {() => setLikes(likes + 1)}
+        >
+        <Text style = {styles.buttonText}>Beğen</Text>
+        </Pressable>
+    </View>
+  );
+}
+
+export default function App(){
+  return (
     <View style = {styles.container}>
-      <Text style = {styles.label}>Sayaç</Text>
-      <Text style = {styles.count}>{count}</Text>
-
-      <View style = {styles.row}>
-        <Pressable
-          style = {styles.button}
-          onPress = {() => setCount(count - 1)}
-        >
-          <Text style = {styles.buttonText}>-</Text>
-        </Pressable>
-
-        <Pressable
-          style = {styles.button}
-          onPress = {() => setCount(0)}
-        >
-          <Text style = {styles.buttonText}>Sıfırla</Text>
-        </Pressable>
-
-        <Pressable
-          style = {styles.button}
-          onPress = {() => setCount(count + 1)}
-        >
-          <Text style = {styles.buttonText}>+</Text>
-        </Pressable>
-      </View>
+      <PostCard title = "React Native" /> 
+{/* Burada PostCard component'i iki kez kullanılıyor ancak her biri kendi state'ine sahip. */}
+      <PostCard title = "TypeScript" />
     </View>
   );
 }
@@ -737,32 +813,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F3F4F6",
     justifyContent: "center",
-    alignItems: "center"
   },
-  label: {
-    fontSize: 16,
-    color: "#4B5563"
+  card: {
+   backgroundColor: "rgba(121, 147, 16, 0.66)",
+   width: 300,
+   padding: 16,
+   borderRadius: 12,
+   marginBottom: 12
   },
-  count: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#7B1E3A",
-    marginVertical: 12
-  },
-  row: {
-    flexDirection: "row",
-    marginTop: 8
+  cardTitle: {
+    fontWeight: "bold"
   },
   button: {
-    backgroundColor: "#7B1E3A",
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
+    backgroundColor:  "rgba(0, 112, 224, 0.79)",
+    paddingVertical: 13,
+    paddingHorizontal: 25,
+    borderRadius: 2,
     marginHorizontal: 6
   },
   buttonText: {
-    color: "#FFFFF",
+    color: "#FFFF",
     fontSize: 16,
     fontWeight: "bold"
+  },
+  likeText: {
+    backgroundColor: "rgba(209, 82, 18, 0.89)"
   }
-});
+})
