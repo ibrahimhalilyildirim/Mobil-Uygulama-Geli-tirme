@@ -317,17 +317,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Ödev: React Native ve Expo kullanarak tek ekranlı bir kişisel profil uygulaması geliştiriniz. Uygulama kendi bilgilerinizi göstermelidir.
-// Ad soyad, bölüm ve sınıf bilgisi ekranda görünmelidir.
-// En az üç ilgi alanı gösterilmelidir.
-// En az bir pressable bulunmalı ve dokunulduğunda console.log ile bir ileti yazdırılmalıdır.
-// Kişisel bilgiler bir JavaScript object'i içinde tutulmalıdır.
-// İlgi alanları bir array içinde tutulmalı ve ekrana map() ile basılmalıdır.
-// Stiller StyleSheet ile tanımlanmalıdır.
-// Layout'ta FlexBox kullanılmalıdır.
-// margin, padding ve borderRadius property'leri kullanılmalıdır.
-
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // import {Pressable, StyleSheet, Text, View} from "react-native";
 
 // const student = {
@@ -1170,63 +1160,240 @@
 
 // ALIŞTIRMA KOLAY
 
-import {StyleSheet, View} from "react-native";
+// import {StyleSheet, View} from "react-native";
 
-export default function App(){
-  return(
-    <View style = {styles.container}>
-      <View style = {styles.generalZone}>
-        <View style = {styles.boxOne}></View>
-        <View style = {styles.boxTwo}></View>
-        <View style = {styles.boxThree}></View>
-      </View>
-    </View>
-  )
-}
+// export default function App(){
+//   return(
+//     <View style = {styles.container}>
+//       <View style = {styles.generalZone}>
+//         <View style = {styles.boxOne}></View>
+//         <View style = {styles.boxTwo}></View>
+//         <View style = {styles.boxThree}></View>
+//       </View>
+//     </View>
+//   )
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  generalZone: {
-    alignItems: "center",
-    justifyContent: "space-around",
-    flexDirection: "row",
-    width: 300,
-    height: 200,
-    backgroundColor: "rgba(117, 53, 103, 0.82)"
-  },
-  boxOne: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 75,
-    height: 75,
-    backgroundColor: "yellow"
-  },
-  boxTwo: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 75,
-    height: 75,
-    backgroundColor: "blue"
-  },
-  boxThree: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: 75,
-    height: 75,
-    backgroundColor: "red"
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   generalZone: {
+//     alignItems: "center",
+//     justifyContent: "space-around",
+//     flexDirection: "row",
+//     width: 300,
+//     height: 200,
+//     backgroundColor: "rgba(117, 53, 103, 0.82)"
+//   },
+//   boxOne: {
+//     justifyContent: "center",
+//     alignItems: "center",
+//     width: 75,
+//     height: 75,
+//     backgroundColor: "yellow"
+//   },
+//   boxTwo: {
+//     justifyContent: "center",
+//     alignItems: "center",
+//     width: 75,
+//     height: 75,
+//     backgroundColor: "blue"
+//   },
+//   boxThree: {
+//     justifyContent: "center",
+//     alignItems: "center",
+//     width: 75,
+//     height: 75,
+//     backgroundColor: "red"
+//   }
+// });
 
-// ALIŞTIRMA KOLAY
+// // ALIŞTIRMA ORTA
 
-// odd: tek, even: çift
+// // odd: tek, even: çift
 
-const numberArray = [3,8,12,5,7,20];
+// const numberArray = [3,8,12,5,7,20];
 
-const evenNumbers = numberArray.filter(number => number % 2 === 0);
+// const evenNumbers = numberArray.filter(number => number % 2 === 0);
 
-console.log(evenNumbers);
+// console.log(evenNumbers);
+
+// // ALIŞTIRMA ORTA
+// import {Pressable, View, Text, StyleSheet} from "react-native";
+
+// const students = ["Ali", "Ayşe", "Mehmet", "Zeynep"];
+
+// export default function App(){
+//   const newStudentArray = students.map((student) => (
+//     <Text key = {student}> {student} </Text>))
+  
+//   return (
+//     <View style = {styles.container}>
+//       <Text style = {styles.title}>   Öğrenciler</Text>
+//       <View style = {styles.card}>
+//         {newStudentArray}
+//       </View>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: "center",
+//     justifyContent: "center",
+//     flexDirection: "column"
+
+//   },
+//   title: {
+//     fontSize: 30,
+//     fontWeight: "bold",
+//     paddingTop: 10,
+//     color: "red",
+//     width: 180,
+//     height: 100,
+//     alignItems: "center",
+//     justifyContent: "center"
+//   },
+//   baseText: {
+//     fontSize: 15,
+//     color: "black",
+//     alignItems: "center",
+//     justifyContent: "center"
+//   },
+//   card: {
+//     flexDirection: "column",
+//     alignItems: "center",
+//     justifyContent: "space-around",
+//     backgroundColor: "#5dc2db54",
+//     borderRadius: 20,
+//     width: 100,
+//     height: 200
+//   }
+// })
+
+// // ALIŞTIRMA ZOR
+
+// import {View, Text, StyleSheet} from "react-native";
+
+// const products = [
+//   {id: 1, name: "Kulaklık", price: 850},
+//   {id: 2, name: "telefon", price: 24000},
+//   {id: 3, name: "Klavye", price: 1200},
+//   {id: 4, name: "Mouse", price: 600}
+// ];
+
+// const expensiveProducts = products.filter(product => product.price > 1000);
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.cardContainer}>
+//         {expensiveProducts.map(product => (
+//           <View key = {product.id} style = {styles.productCard}>
+//             <Text style = {styles.productName}>{product.name}</Text>
+//             <Text style = {styles.productPrice}>{product.price}</Text>
+//         </View>
+//         ))}
+//       </View>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create ({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   cardContainer: {
+//     backgroundColor: "#12844d91",
+//     width: 400,
+//     height: 600,
+//     borderRadius: 20,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   productName: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333"
+//   },
+//   productPrice: {
+//     fontSize: 15,
+//     color: "#green",
+//     marginTop: 5
+//   },
+//   productCard: {
+//     backgroundColor: "white",
+//     padding: 15,
+//     marginVertical: 10,
+//     borderRadius: 10,
+//     width: 250,
+//     alignItems: "center"
+//   }
+// });
+
+// // HAFTA 1 ÖDEV
+
+// import {Pressable, View, StyleSheet, Text} from "react-native";
+// // map() function'ı sadece dizilerle çalışır. Object'lerle çalışmaz.
+// const student = {
+//   name: "İbrahim Halil Yıldırım",
+//   department: "Computer Engineering",
+//   grade: "3",
+// }
+
+// const interests = ["Photographing", "Running", "Reading"]
+
+// export default function App(){
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.infoCard}>
+//         <Text style = {styles.nameText}>{student.name}</Text>
+//         <Text style = {styles.text}>{student.department}</Text>
+//         <Text style = {styles.text}>{student.grade}</Text>
+      
+//         {interests.map(elements => (
+//           <Text style = {styles.text}>{elements}</Text>)
+//         )}
+//         </View>
+//     </View>
+//   )
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   infoCard: {
+//     backgroundColor: "#a1ebab",
+//     alignItems: "center",
+//     justifyContent: "center",
+//     width: 300,
+//     height: 300
+//   },
+//   text: {
+//     fontSize: 15,
+//     color: "black",
+//   },
+//   nameText: {
+//     fontSize: 30,
+//     fontWeight: "bold",
+//     color: "grey"
+//   }
+// })
+
+// Değişken tanımlarken türünü dilin kendisinin anlamasına type inference (tip çıkarımı) denir.
+
+// interface bir object'in hangi property'lere sahip olacağını ve her property'nin tipinin ne olduğunu tanımlar.
+
+// interface Student {
+//   name: string;
+//   grade: number;
+// }
