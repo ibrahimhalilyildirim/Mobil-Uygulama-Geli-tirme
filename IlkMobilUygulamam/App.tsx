@@ -2,6 +2,10 @@
 
 // import { Pressable } from "react-native";
 
+// import { Pressable } from "react-native";
+
+// import { Pressable } from "react-native";
+
 
 // import { StyleSheet, Text, View} from 'react-native';
 
@@ -1397,3 +1401,367 @@
 //   name: string;
 //   grade: number;
 // }
+
+
+// interface Student {
+//     id: number;
+//     name: string;
+//     department: string;
+// }
+// const students: Student[] = [
+// {    id: 1,
+//     name: "Ali",
+//     department: "Bilgisayar Mühendisliği"
+// },
+// {
+//     id: 2,
+//     name: "Ayşe",
+//     department: "Bilgisayar Mühendisliği"
+// }
+// ];
+
+// export default function App(){
+//     {students.map(student => (
+//         <StudentCard
+//             key = {student.id}
+//             name = {student.name}
+//             department = {student.department}
+//         />
+//     ))}
+// }
+
+// Props dışarıdan gelir ve component onu değiştiremez.
+// import {useState} from "react";
+
+// import {View, Text, StyleSheet, Pressable} from "react-native";
+// import {useState} from "react";
+
+
+// export default function App(){
+
+//     const [count, setCount] = useState(0);
+
+//     return(
+//         <View style = {styles.container}>
+//                 <Text style = {styles.count}>{count}</Text>
+//             <View style = {styles.buttonContainer}>
+//                   <Pressable
+//                     style = {styles.button}
+//                     onPress = {() => setCount(count + 1)}
+//                     >
+//                     <Text style = {styles.buttonText}>Artır</Text>
+//                   </Pressable>
+//                   <Pressable
+//                     style = {styles.button}
+//                     onPress = {() => setCount(count - 1)}
+//                     >
+//                     <Text style = {styles.buttonText}>Azalt</Text>
+//                  </Pressable>
+//             </View>
+//         </View>
+//     )
+// }
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         alignItems: "center",
+//         justifyContent: "space-between",
+//     },
+//     buttonContainer:{
+//         flex: 1,
+//         alignItems: "center",
+//         justifyContent: "space-between",
+//         flexDirection: "row",
+//         width: 150
+//     },
+//     buttonText: {
+//         fontSize: 15,
+//         color: "black"
+//     },
+//     button: {
+//         justifyContent: "center",
+//         alignItems: "center",
+//         width: 50,
+//         height: 50,
+//         backgroundColor: "#60aaac4e"
+//     },
+//     count: {
+//         fontSize: 50,
+//         color: "red",
+//         paddingTop: 200,
+//     }
+// })
+
+// const [loggedIn, setLoggedIn] = useState(false);
+
+// {loggedIn ? (
+//     <Text> Hoş Geldiniz.</Text>
+// ) : (
+//     <Text> Giriş Yapınız.</Text>
+// )}
+
+// <Pressable
+//     style = {loggedIn ? styles.buttonOn : styles.button}
+// ></Pressable>
+
+// import {StyleSheet, Text, View} from "react-native";
+
+// interface Student {
+//     id: number,
+//     name: string,
+//     department: string,
+//     grade: number;
+// }
+// interface StudentCardProps {
+//     name: string;
+//     department: string;
+//     grade: number;
+// }
+
+// const students: Student[] = [
+//     {
+//         id: 1,
+//         name: "Ali Yıldız",
+//         department: "Bilgisayar Mühendisliği",
+//         grade: 2
+//     },
+//     {
+//         id: 2,
+//         name: "Ayşe Demir",
+//         department: "Bilgisayar Mühendisliği",
+//         grade: 3
+//     },
+//     {
+//         id: 3,
+//         name: "Mehmet Kaya",
+//         department: "Yazılım Mühendisliği",
+//         grade: 1
+//     }
+// ];
+
+// function StudentCard({name, department, grade
+// } : StudentCardProps) {
+//     return (
+//         <View style = {styles.card}>
+//             <Text style = {styles.name}>{name}</Text>
+//             <Text style = {styles.info}>{department}</Text>
+//             <Text style = {styles.info}>{grade}</Text>
+//         </View>
+//     );
+// }
+
+// export default function App(){
+//     return (
+//         <View style = {styles.container}>
+//             <Text style = {styles.title}>Öğrenci Listesi</Text>
+
+//             {students.map(student => (
+//                 <StudentCard
+//                     key = {student.id}
+//                     name = {student.name}
+//                     department = {student.department}
+//                     grade = {student.grade}
+//                 />
+//             ))}
+//         </View>
+//     );
+// }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: "#F3F4F6",
+//         paddingTop: 60,
+//         alignItems: "center"
+//     },
+//     title: {
+//         fontSize: 20,
+//         fontWeight: "bold",
+//         color: "#1F2937",
+//         marginBottom: 16
+//     },
+//     card: {
+//         backgroundColor: "FFFFFF",
+//         width: 300,
+//         padding: 16,
+//         borderRadius: 12,
+//         marginBottom: 12
+//     },
+//     name: {
+//         fontSize: 17,
+//         fontWeight: "bold",
+//         color: "#7B1E3A"
+//     },
+//     info: {
+//         fontSize: 14,
+//         color: "#4B5563",
+//         marginTop: 3
+//     }
+// });
+
+// import {Pressable, View, StyleSheet, Text} from "react-native";
+// import {useState} from "react";
+
+// export default function App(){
+//     const [count, setCount] = useState(0);
+
+//     return (
+//         <View style = {styles.container}>
+//             <Text style = {styles.label}>Sayaç</Text>
+//             <Text style = {styles.count}>{count}</Text>
+
+//             <View style = {styles.row}>
+//                 <Pressable
+//                     style = {styles.button}
+//                     onPress={() => setCount(count - 1)}
+//                 >
+//                     <Text style = {styles.buttonText}>-</Text>
+//                 </Pressable>
+                
+//                 <Pressable
+//                     style = {styles.button}
+//                     onPress = {() => setCount(0)}
+//                 >
+//                     <Text style = {styles.buttonText}>Sıfırla</Text>
+//                 </Pressable>
+
+//                 <Pressable
+//                     style = {styles.button}
+//                     onPress = {() => setCount(count + 1)}
+//                 >
+//                     <Text style = {styles.buttonText}>+</Text>
+//                 </Pressable>
+//             </View>
+//         </View>
+//     );
+// }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         backgroundColor: "#F3F4F6",
+//         justifyContent: "center",
+//         alignItems: "center"
+//     },
+//     label: {
+//         fontSize: 16,
+//         color: "#4B5563",
+//     },
+//     count: {
+//         fontSize: 64,
+//         fontWeight: "bold",
+//         color: "#7B1E3A",
+//         marginVertical: 12
+//     },
+//     row: {
+//         flexDirection: "row",
+//         marginTop: 8
+//     },
+//     button: {
+//         backgroundColor: "7B1E3A",
+//         paddingVertical: 12,
+//         paddingHorizontal: 20,
+//         borderRadius: 8,
+//         marginHorizontal: 6
+//     },
+//     buttonText: {
+//         color: "#000000",
+//         fontSize: 16,
+//         fontWeight: "bold"
+//     }
+// });
+
+// // Bir component'i birden çok kez kullandığımızda ne olur? Her kullanılm kendi state'ine shaip olur. Bunu bir beğeni butonu ile görelim.
+
+// import {Pressable, Text, View, StyleSheet} from "react-native";
+// import {useState} from "react";
+
+
+// interface PostCardProps {
+//     title: string;
+// }
+// function PostCard({title}: PostCardProps){
+//     const [likes, setLikes] = useState(0);
+//     return (
+//         <View style = {styles.card}>
+//             <Text style = {styles.cardTitle}>{title}</Text>
+//             <Text style = {styles.likeText}>Beğeni: {likes}</Text>
+
+//             <Pressable
+//                 style = {styles.button}
+//                 onPress = {() => setLikes(likes + 1)}
+//             >
+//                 <Text style = {styles.buttonText}>Beğen</Text>
+//             </Pressable>
+//         </View>
+//     );
+// }
+// export default function App(){
+//     return (
+//         <View style = {styles.container}>
+//             <PostCard title = "React Native" />
+//         </View>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         alignItems: "center",
+//         justifyContent: "center"
+//     },
+//     buttonText: {
+//         fontSize: 15,
+//         color: "black"
+//     },
+//     button: {
+//         backgroundColor: "rgba(152, 168, 136, 0.31)",
+//         width: 100,
+//         height: 100
+//     },
+//     cardTitle: {
+//         fontSize: 40,
+//         fontWeight: "bold",
+//         color: "#5e7172"
+//     },
+//     likeText: {
+//         fontSize: 20,
+//         color: "yellow"
+//     },
+//     card: {
+//         backgroundColor: "grey",
+//         width: 300,
+//         height: 300
+//     }
+// })
+
+// ALIŞTIRMA DERS KARTLARI UYGULAMASI
+
+interface Course {
+    id: number;
+    name: string;
+    instructor: string;
+    credit: number,
+}
+
+const courses: Course[] = [
+    {
+        id: 1,
+        name: "Veri Yapıları",
+        instructor: "Adnan Fatih Kocamaz",
+        credit: 7
+    },
+    {
+        id: 2,
+        name: "Veri Tabanı Yönetim Sistemleri",
+        instructor: "Ahmet Arif Aydın",
+        credit: 6
+    },
+    {
+        id: 3,
+        name: "İşletim Sistemleri",
+        instructor: "Abdullah Ateş",
+        credit: 5
+    }
+];
+
