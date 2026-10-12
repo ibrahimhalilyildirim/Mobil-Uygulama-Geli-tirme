@@ -1737,31 +1737,33 @@
 
 // ALIŞTIRMA DERS KARTLARI UYGULAMASI
 
-interface Course {
-    id: number;
-    name: string;
-    instructor: string;
-    credit: number,
-}
+// interface Course {
+//     id: number;
+//     name: string;
+//     instructor: string;
+//     credit: number,
+// }
 
-const courses: Course[] = [
-    {
-        id: 1,
-        name: "Veri Yapıları",
-        instructor: "Adnan Fatih Kocamaz",
-        credit: 7
-    },
-    {
-        id: 2,
-        name: "Veri Tabanı Yönetim Sistemleri",
-        instructor: "Ahmet Arif Aydın",
-        credit: 6
-    },
-    {
-        id: 3,
-        name: "İşletim Sistemleri",
-        instructor: "Abdullah Ateş",
-        credit: 5
-    }
-];
+// const courses: Course[] = [
+//     {
+//         id: 1,
+//         name: "Veri Yapıları",
+//         instructor: "Adnan Fatih Kocamaz",
+//         credit: 7
+//     },
+//     {
+//         id: 2,
+//         name: "Veri Tabanı Yönetim Sistemleri",
+//         instructor: "Ahmet Arif Aydın",
+//         credit: 6
+//     },
+//     {
+//         id: 3,
+//         name: "İşletim Sistemleri",
+//         instructor: "Abdullah Ateş",
+//         credit: 5
+//     }
+// ];
 
+
+// HAFTANIN ÖDEVİ TO DO LIST UYGULAMASI
