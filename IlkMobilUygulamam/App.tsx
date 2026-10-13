@@ -1,5 +1,7 @@
 // // Çalıştırmak için cd IlkMobilUygulamam ve ardından npx expo start
 
+// / / / //  // / / / / / / / // import { useState } from "react";
+
 // import { Pressable } from "react-native";
 
 // import { Pressable } from "react-native";
@@ -689,80 +691,79 @@
 // });
 
 
-// // UYGULAMA Basit Sayaç
+// UYGULAMA Basit Sayaç
 
-// import {useState} from "react";
-// import { Pressable, StyleSheet, Text, View } from "react-native";
+import {useState} from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
-// export default function App(){
-//   const [count, setCount] = useState(0);
+export default function App(){
+  const [count, setCount] = useState(0);
 
-//   return (
-//     <View style = {styles.container}>
-//       <Text style = {styles.label}>Sayaç</Text>
-//       <Text style = {styles.count}>{count}</Text>
+  return (
+    <View style = {styles.container}>
+      <Text style = {styles.label}>Sayaç</Text>
+      <Text style = {styles.count}>{count}</Text>
 
-//       <View style = {styles.row}>
-//         <Pressable
-//           style = {styles.button}
-//           onPress = {() => setCount(count - 1)}
-//         >
-//           <Text style = {styles.buttonText}>-</Text>
-//         </Pressable>
+      <View style = {styles.row}>
+        <Pressable
+          style = {styles.button}
+          onPress = {() => setCount(count - 1)}
+        >
+          <Text style = {styles.buttonText}>-</Text>
+        </Pressable>
 
-//         <Pressable
-//           style = {styles.button}
-//           onPress = {() => setCount(0)}
-//         >
-//           <Text style = {styles.buttonText}>Sıfırla</Text>
-//         </Pressable>
+        <Pressable
+          style = {styles.button}
+          onPress = {() => setCount(0)}
+        >
+          <Text style = {styles.buttonText}>Sıfırla</Text>
+        </Pressable>
 
-//         <Pressable
-//           style = {styles.button}
-//           onPress = {() => setCount(count + 1)}
-//         >
-//           <Text style = {styles.buttonText}>+</Text>
-//         </Pressable>
-//       </View>
-//     </View>
-//   );
-// }
+        <Pressable
+          style = {styles.button}
+          onPress = {() => setCount(count + 1)}
+        >
+          <Text style = {styles.buttonText}>+</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+}
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#F3F4F6",
-//     justifyContent: "center",
-//     alignItems: "center"
-//   },
-//   label: {
-//     fontSize: 16,
-//     color: "#4B5563"
-//   },
-//   count: {
-//     fontSize: 16,
-//     fontWeight: "bold",
-//     color: "#7B1E3A",
-//     marginVertical: 12
-//   },
-//   row: {
-//     flexDirection: "row",
-//     marginTop: 8
-//   },
-//   button: {
-//     backgroundColor: "#7B1E3A",
-//     paddingVertical: 12,
-//     paddingHorizontal: 20,
-//     borderRadius: 8,
-//     marginHorizontal: 6
-//   },
-//   buttonText: {
-//     color: "#FFFFF",
-//     fontSize: 16,
-//     fontWeight: "bold"
-//   }
-// });
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#F3F4F6",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  label: {
+    fontSize: 16,
+    color: "#4B5563"
+  },
+  count: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#7B1E3A",
+    marginVertical: 12
+  },
+  row: {
+    flexDirection: "row",
+    marginTop: 8
+  },
+  button: {
+    backgroundColor: "#7B1E3A",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginHorizontal: 6
+  },
+  buttonText: {
+    color: "#FFFFF",
+    fontSize: 16,
+    fontWeight: "bold"
+  }
+});
 // Bir component'i birden çok kez kullandığımızda ne olur? Her kullanım kendi state'ine sahip olur. Bunu bir beğeni butonu ile görelim.
 
 // import {Pressable, StyleSheet, Text, View} from "react-native";
@@ -1735,109 +1736,207 @@
 //     }
 // })
 
-// ALIŞTIRMA DERS KARTLARI UYGULAMASI
-import {StyleSheet, View, Text, Pressable} from "react-native";
-import {useState} from "react";
+// // ALIŞTIRMA DERS KARTLARI UYGULAMASI
+// import {StyleSheet, View, Text, Pressable} from "react-native";
+// import {useState} from "react";
 
-interface Course {
-    id: number;
-    name: string;
-    instructor: string;
-    credit: number,
-}
+// interface Course {
+//     id: number;
+//     name: string;
+//     instructor: string;
+//     credit: number,
+// }
 
-interface CourseCardProps {
-    name: string;
-    instructor: string;
-    credit: number;
-}
+// interface CourseCardProps {
+//     name: string;
+//     instructor: string;
+//     credit: number;
+// }
 
-function CourseCard ({name, instructor, credit} : CourseCardProps){
-    const [favourite, setFavourite] = useState(false);
+// function CourseCard ({name, instructor, credit} : CourseCardProps){
+//     const [favourite, setFavourite] = useState(false);
 
-    return (
-        <View style = {styles.card}>
-            <Text style = {styles.nameText}>{name}</Text>
-            <Text style = {styles.infoText}>{instructor}</Text>
-            <Text style = {styles.infoText}>{credit}</Text>
+//     return (
+//         <View style = {styles.card}>
+//             <Text style = {styles.nameText}>{name}</Text>
+//             <Text style = {styles.infoText}>{instructor}</Text>
+//             <Text style = {styles.infoText}>{credit}</Text>
 
-            <Pressable style = {styles.button}
-                onPress = {() => setFavourite(!favourite)}
-            >
-                <Text> {favourite ? "Favorilerden çıkar." : "Favorilere ekle."}</Text>
-            </Pressable>
-        </View>
-    );
-}
+//             <Pressable style = {styles.button}
+//                 onPress = {() => setFavourite(!favourite)}
+//             >
+//                 <Text> {favourite ? "Favorilerden çıkar." : "Favorilere ekle."}</Text>
+//             </Pressable>
+//         </View>
+//     );
+// }
 
-const courses: Course[] = [
-    {
-        id: 1,
-        name: "Veri Yapıları",
-        instructor: "Adnan Fatih Kocamaz",
-        credit: 7
-    },
-    {
-        id: 2,
-        name: "Veri Tabanı Yönetim Sistemleri",
-        instructor: "Ahmet Arif Aydın",
-        credit: 6
-    },
-    {
-        id: 3,
-        name: "İşletim Sistemleri",
-        instructor: "Abdullah Ateş",
-        credit: 5
-    }
-];
+// const courses: Course[] = [
+//     {
+//         id: 1,
+//         name: "Veri Yapıları",
+//         instructor: "Adnan Fatih Kocamaz",
+//         credit: 7
+//     },
+//     {
+//         id: 2,
+//         name: "Veri Tabanı Yönetim Sistemleri",
+//         instructor: "Ahmet Arif Aydın",
+//         credit: 6
+//     },
+//     {
+//         id: 3,
+//         name: "İşletim Sistemleri",
+//         instructor: "Abdullah Ateş",
+//         credit: 5
+//     }
+// ];
 
-export default function App(){
-    return (
-        <View style = {styles.container}>
-            {courses.map(course => (
-                <CourseCard
-                    key = {course.id}
-                    name = {course.name}
-                    instructor = {course.instructor}
-                    credit = {course.credit}
-                />
-            ))}
-        </View>
-    )
-}
+// export default function App(){
+//     return (
+//         <View style = {styles.container}>
+//             {courses.map(course => (
+//                 <CourseCard
+//                     key = {course.id}
+//                     name = {course.name}
+//                     instructor = {course.instructor}
+//                     credit = {course.credit}
+//                 />
+//             ))}
+//         </View>
+//     )
+// }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    cardTitle: {
-        fontSize: 50,
-        fontWeight: "bold",
-        color: "#2e3f37",
-    },
-    nameText: {
-        fontSize: 50,
-        color: "black"
-    },
-    infoText: {
-        fontSize: 15
-    },
-    button: {
-        backgroundColor: "rgb(128, 176, 224)",
-        paddingVertical: 10,
-        borderRadius: 10
-    },
-    buttonText: {
-        fontSize: 20,
-        color: "black"
-    },
-    card: {
-        backgroundColor: "#f2f4f6",
-        width: 300,
-        paddingVertical: 20
-    }
-})
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         alignItems: "center",
+//         justifyContent: "center"
+//     },
+//     cardTitle: {
+//         fontSize: 50,
+//         fontWeight: "bold",
+//         color: "#2e3f37",
+//     },
+//     nameText: {
+//         fontSize: 50,
+//         color: "black"
+//     },
+//     infoText: {
+//         fontSize: 15
+//     },
+//     button: {
+//         backgroundColor: "rgb(128, 176, 224)",
+//         paddingVertical: 10,
+//         borderRadius: 10
+//     },
+//     buttonText: {
+//         fontSize: 20,
+//         color: "black"
+//     },
+//     card: {
+//         backgroundColor: "#f2f4f6",
+//         width: 300,
+//         paddingVertical: 20
+//     }
+// })
 
-// HAFTANIN ÖDEVİ TO DO LIST UYGULAMASI
+// // HAFTANIN ÖDEVİ TO DO LIST UYGULAMASI
+
+// ÇÖZÜMLÜ ÖRNEK YENİDEN ÇÖZÜM DERS KARTLARI UYGULAMASI
+
+// import {Pressable, View, Text, StyleSheet} from "react-native";
+// import {useState} from "react";
+
+// interface Course {
+//     id: number;
+//     name: string;
+//     instructor: string;
+//     credit: number;
+// }
+
+// interface CourseCardProps {
+//     name: string;
+//     instructor: string;
+//     credit: number;
+// }
+
+// const courses: Course[] = [
+//     {
+//         id: 1,
+//         name: "Veri Organizasyonu",
+//         instructor: "Ahmet Arif Aydın",
+//         credit: 6
+//     },
+//     {
+//         id: 2,
+//         name: "Otomata",
+//         instructor: "Abdullah Ateş",
+//         credit: 7
+//     },
+//     {
+//         id: 3,
+//         name: "Görüntü İşleme",
+//         instructor: "Muhammed Fatih Talu",
+//         credit: 19
+//     }
+// ]
+
+// function CourseCard ({name, instructor, credit} : CourseCardProps){
+//     const [favorite, setFavorite] = useState(false);
+
+//     return(
+//         <View style = {styles.courseCard}>
+//             <Text style = {styles.nameText}>{name}</Text>
+//             <Text style = {styles.infoText}>{instructor}</Text>
+//             <Text style = {styles.infoText}>{credit}</Text>
+
+//             <Pressable style = {styles.button}
+//                 onPress = {() => setFavorite(!favorite)}
+//             >
+//                 <Text> {favorite ? "Favorilerden çıkar." : "Favorilere ekle."} </Text>
+//             </Pressable>
+//         </View>) 
+// }
+
+// export default function App(){
+//     return (
+//         <View style = {styles.container}>
+//             {courses.map(course =>
+//                 (<CourseCard
+//                     key = {course.id}
+//                     name = {course.name}
+//                     instructor = {course.instructor}
+//                     credit = {course.credit}
+//                 />
+//             ))}
+//         </View>
+//     )
+// }
+
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         justifyContent: "center",
+//         alignItems: "center"
+//     },
+//     courseCard: {
+//         backgroundColor: "grey",
+//         width: 200,
+//         height: 200
+//     },
+//     nameText: {
+//         fontSize: 25,
+//         fontWeight: "bold",
+//         color: "black"
+//     },
+//     infoText: {
+//         fontSize: 15,
+//         color: "black"
+//     },
+//     button: {
+//         backgroundColor: "#4d6364",
+//         width: 100,
+//         height: 100
+//     }
+// });
