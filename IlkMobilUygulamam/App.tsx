@@ -1736,34 +1736,108 @@
 // })
 
 // ALIŞTIRMA DERS KARTLARI UYGULAMASI
+import {StyleSheet, View, Text, Pressable} from "react-native";
+import {useState} from "react";
 
-// interface Course {
-//     id: number;
-//     name: string;
-//     instructor: string;
-//     credit: number,
-// }
+interface Course {
+    id: number;
+    name: string;
+    instructor: string;
+    credit: number,
+}
 
-// const courses: Course[] = [
-//     {
-//         id: 1,
-//         name: "Veri Yapıları",
-//         instructor: "Adnan Fatih Kocamaz",
-//         credit: 7
-//     },
-//     {
-//         id: 2,
-//         name: "Veri Tabanı Yönetim Sistemleri",
-//         instructor: "Ahmet Arif Aydın",
-//         credit: 6
-//     },
-//     {
-//         id: 3,
-//         name: "İşletim Sistemleri",
-//         instructor: "Abdullah Ateş",
-//         credit: 5
-//     }
-// ];
+interface CourseCardProps {
+    name: string;
+    instructor: string;
+    credit: number;
+}
 
+function CourseCard ({name, instructor, credit} : CourseCardProps){
+    const [favourite, setFavourite] = useState(false);
+
+    return (
+        <View style = {styles.card}>
+            <Text style = {styles.nameText}>{name}</Text>
+            <Text style = {styles.infoText}>{instructor}</Text>
+            <Text style = {styles.infoText}>{credit}</Text>
+
+            <Pressable style = {styles.button}
+                onPress = {() => setFavourite(!favourite)}
+            >
+                <Text> {favourite ? "Favorilerden çıkar." : "Favorilere ekle."}</Text>
+            </Pressable>
+        </View>
+    );
+}
+
+const courses: Course[] = [
+    {
+        id: 1,
+        name: "Veri Yapıları",
+        instructor: "Adnan Fatih Kocamaz",
+        credit: 7
+    },
+    {
+        id: 2,
+        name: "Veri Tabanı Yönetim Sistemleri",
+        instructor: "Ahmet Arif Aydın",
+        credit: 6
+    },
+    {
+        id: 3,
+        name: "İşletim Sistemleri",
+        instructor: "Abdullah Ateş",
+        credit: 5
+    }
+];
+
+export default function App(){
+    return (
+        <View style = {styles.container}>
+            {courses.map(course => (
+                <CourseCard
+                    key = {course.id}
+                    name = {course.name}
+                    instructor = {course.instructor}
+                    credit = {course.credit}
+                />
+            ))}
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    cardTitle: {
+        fontSize: 50,
+        fontWeight: "bold",
+        color: "#2e3f37",
+    },
+    nameText: {
+        fontSize: 50,
+        color: "black"
+    },
+    infoText: {
+        fontSize: 15
+    },
+    button: {
+        backgroundColor: "rgb(128, 176, 224)",
+        paddingVertical: 10,
+        borderRadius: 10
+    },
+    buttonText: {
+        fontSize: 20,
+        color: "black"
+    },
+    card: {
+        backgroundColor: "#f2f4f6",
+        width: 300,
+        paddingVertical: 20
+    }
+})
 
 // HAFTANIN ÖDEVİ TO DO LIST UYGULAMASI
