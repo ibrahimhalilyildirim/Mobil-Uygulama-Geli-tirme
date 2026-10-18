@@ -2288,59 +2288,474 @@
 
 // Alıştırma 3.1 ORTA
 
-import {StyleSheet, Text, View} from "react-native";
-import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
-interface ProfileCardProps{
-  name: string;
-  department: string;
-}
+// import {StyleSheet, Text, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+// interface ProfileCardProps{
+//   name: string;
+//   department: string;
+// }
 
-function ProfileCard({name, department}: ProfileCardProps){
-  return (
-    <View style = {styles.profileCard}>
-      <Text style = {styles.profileName}>{name}</Text>
-      <Text style = {styles.profileDepartment}>{department}</Text>
-    </View>
-  );
-}
+// function ProfileCard({name, department}: ProfileCardProps){
+//   return (
+//     <View style = {styles.profileCard}>
+//       <Text style = {styles.profileName}>{name}</Text>
+//       <Text style = {styles.profileDepartment}>{department}</Text>
+//     </View>
+//   );
+// }
 
-export default function App(){
-  return(
-    <SafeAreaProvider>
-      <SafeAreaView style = {styles.container}>
-        <ProfileCard name = "İbrahim Halil Yıldırım" department = "Computer Engineering" />
-        <ProfileCard name = "Ayşe Demir" department = "Software Engineering" />
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-}
+// export default function App(){
+//   return(
+//     <SafeAreaProvider>
+//       <SafeAreaView style = {styles.container}>
+//         <ProfileCard name = "İbrahim Halil Yıldırım" department = "Computer Engineering" />
+//         <ProfileCard name = "Ayşe Demir" department = "Software Engineering" />
+//       </SafeAreaView>
+//     </SafeAreaProvider>
+//   );
+// }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  profileCard: {
-    backgroundColor: "#eccc6e",
-    paddingBottom: 40,
-    paddingHorizontal: 20,
-    borderRadius: 15,
-    marginBottom: 10,
-    alignItems: "center",
-    justifyContent: "center"
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     padding: 20,
+//   },
+//   profileCard: {
+//     backgroundColor: "#eccc6e",
+//     paddingBottom: 40,
+//     paddingHorizontal: 20,
+//     borderRadius: 15,
+//     marginBottom: 10,
+//     alignItems: "center",
+//     justifyContent: "center"
+//   },
   
-  profileName: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: "black",
-    marginBottom: 5,
-    paddingTop: 20,
-  },
+//   profileName: {
+//     fontSize: 30,
+//     fontWeight: "bold",
+//     color: "black",
+//     marginBottom: 5,
+//     paddingTop: 20,
+//   },
 
-  profileDepartment: {
-    fontSize: 18,
-    color: "rgba(48, 48, 48, 0.47)",
-  }
-});
+//   profileDepartment: {
+//     fontSize: 18,
+//     color: "rgba(48, 48, 48, 0.47)",
+//   }
+// });
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+// HAFTA 2 - 3 Alıştırmalar
+
+// Verileri bileşenler arasında taşımak için props kullanılır.
+// Parent component, child component'e veri gönderir.
+// Gönderilen verinin türünü güvenceye almak için ise interface kullanılır.
+// Component içinde destructuring yöntemiyle props'lar yakalanır.
+
+// Örnek
+
+// import {StyleSheet, Text, View} from "react-native";
+
+// // Child component'in alacağı verilerin tipini belirliyoruz.
+
+// interface StudentCardProps{
+//   name: string;
+//   department: string;
+//   grade: number;
+// }
+
+// // Reusable component'imizi yazıyoruz ve destructuring yapıyoruz.
+
+// function StudentCard({name, department, grade}: StudentCardProps){
+//   return(
+//     <View style = {styles.card}>
+//       <Text style = {styles.nameText}>{name}</Text>
+//       <Text style = {styles.infoText}>{department}</Text>
+//       <Text style = {styles.infoText}>{grade}</Text>
+//     </View>
+//   );
+// }
+
+// export default function App(){
+//   return(
+//     <View style = {styles.container}>
+//       <Text style = {styles.title}>Öğrenci Profilleri</Text>
+//       <StudentCard name = "İbrahim Halil Yıldırım" department = "Bilgisayar Mühendisliği" grade = {3} />
+//     </View>
+//   );
+// }
+// const styles = StyleSheet.create({
+//   container: { flex: 1, backgroundColor: '#F3F4F6', paddingTop: 60, alignItems: 'center' },
+//   title: { fontSize: 20, fontWeight: '700', marginBottom: 16, color: '#1F2937' },
+//   card: { backgroundColor: '#FFFFFF', width: 300, padding: 14, borderRadius: 10, marginBottom: 10 },
+//   nameText: { fontSize: 16, fontWeight: '700', color: '#7B1E3A' },
+//   infoText: { fontSize: 12, color: '#4B5563', marginTop: 2 }
+// });
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+// Aynı bileşen yapısı props sayesinde farklı verilerle tekrar kullanılabilir.
+ 
+
+// import React from 'react';
+// import { StyleSheet, Text, View } from 'react-native';
+
+// export default function BoxModelExample() {
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.box}>
+//         <Text style={styles.text}>Box Model Örneği</Text>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#E5E7EB' },
+//   box: {
+//     backgroundColor: '#FFFFFF',      // Kutunun arka plan rengi
+//     borderWidth: 2,                  // Çerçeve kalınlığı (Border)
+//     borderColor: '#7B1E3A',          // Çerçeve rengi
+//     borderRadius: 12,                // Köşe yuvarlama
+//     paddingHorizontal: 20,           // Sağdan/soldan iç boşluk (Padding)
+//     paddingVertical: 16,             // Üstten/alttan iç boşluk (Padding)
+//     margin: 10,                      // Dış boşluk (Margin)
+//   },
+//   text: { fontSize: 14, fontWeight: '600', color: '#1F2937' }
+// });
+
+// import React from 'react';
+// import { StyleSheet, Text, View } from 'react-native';
+
+// export default function FlexboxAxesExample() {
+//   return (
+//     <View style={styles.container}>
+//       <View style={styles.rowContainer}>
+//         <View style={styles.box}><Text style={styles.boxText}>A</Text></View>
+//         <View style={styles.box}><Text style={styles.boxText}>B</Text></View>
+//         <View style={styles.box}><Text style={styles.boxText}>C</Text></View>
+//       </View>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: { flex: 1, backgroundColor: '#F9FAFB', justifyContent: 'center', alignItems: 'center' },
+//   rowContainer: {
+//     width: '90%', height: 100, backgroundColor: '#E5E7EB', borderRadius: 10,
+//     flexDirection: 'row',          // Ana ekseni YATAY yapar!
+//     justifyContent: 'space-around',// Yatayda eşit dağıtır
+//     alignItems: 'center',          // Dikeyde ortalar
+//   },
+//   box: { width: 50, height: 50, backgroundColor: '#7B1E3A', borderRadius: 8, justifyContent: 'center', alignItems: 'center' },
+//   boxText: { color: '#FFFFFF', fontWeight: 'bold' }
+// // });
+// import { StyleSheet, Text, View } from 'react-native';
+// import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+// export default function SafeAreaExample() {
+//   return (
+//     <SafeAreaProvider>
+//       <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
+//         <View style={styles.content}>
+//           <Text style={styles.title}>Güvenli Alan İçeriği</Text>
+//           <Text style={styles.description}>Bu yazı çentiğin altında kalmaz.</Text>
+//         </View>
+//       </SafeAreaView>
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   safeArea: { flex: 1, backgroundColor: '#F5F7FA' },
+//   content: { flex: 1, padding: 16, justifyContent: 'center', alignItems: 'center' },
+//   title: { fontSize: 18, fontWeight: '700', color: '#202124' },
+//   description: { fontSize: 12, color: '#666666', marginTop: 4 }
+// });
+
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// Cihaz çentikleri ve sistem çubuklarıyla içeriğin çakışmaması için SafeAreaProvider en dışa, 
+// SafeAreaView ise ekran içeriklerine uygulanır.
+
+// import {StyleSheet, Text, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+// export default function SafeAreaExample() {
+//   return (
+//     <SafeAreaProvider>
+//       <SafeAreaView style = {styles.safeArea} edges = {["top", "bottom"]}>
+//         <View style = {styles.content}>
+//           <Text style = {styles.title}>Güvenli alan içeriği</Text>
+//           <Text style = {styles.description}>Bu yazı çentiğin altında kalmaz.</Text>
+//         </View>
+//       </SafeAreaView>
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   safeArea: {flex: 1, backgroundColor: "#F5F7FA"},
+//   content: {flex: 1, padding: 16, justifyContent: "center", alignItems: "center"},
+//   title: {fontSize: 18, fontWeight: "700", color: "#202124"},
+//   description: {fontSize: 12, color: "#666665", marginTop: 4}
+// });
+
+// Yerel resimler require() ile, internet resimleri {uri: "....."} ile yüklenir.
+// Uzak resimlere width ve height vermek zorunludur. borderRadius'u genişliğin yarısına eşitlersek tam dairesel görünüm elde ederiz.
+
+// import {Image, StyleSheet, Text, View} from "react-native";
+
+// export default function ImageExample(){
+//   return(
+//     <View style = {styles.container}>
+//       <Image
+//         source = {{uri: "https://reactnative.dev/img/tiny_logo.png"}}
+//         style = {styles.avatar}
+//         resizeMode = "cover" // Görselin sığdırılma modu.
+//       />
+//       <Text style = {styles.name}>İbrahim Halil Yıldırım</Text>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "white"
+//   },
+
+//   avatar: {
+//     width: 90,
+//     height: 90,
+//     borderRadius: 45,
+//     backgroundColor: "#E3E7ED",
+//     marginBottom: 10
+//   },
+
+//   name: {
+//     fontSize: 18,
+//     fontWeight: "700", // 100-900 arası. 700 tam bold'a karşılık gelir.
+//     color: "#202124"
+//   }
+// });
+
+// Ekrana sığmayan uzun içerikler için ScrollView kullanılır.
+// İç boşluklar style yerine contentContainerStyle  içine verilmelidir.
+// ScrollView içerisine flex: 1 verilmemelidir. 
+// Çok daha performans gereken durumlarda ScrollView yerine FlatList (Ekranda görünmeyen ögeleri bellekte tutmaz.) kullanılır.
+
+// import {ScrollView, StyleSheet, Text, View} from "react-native";
+
+// export default function ScrollViewExample() {
+//   return(
+//     <ScrollView contentContainerStyle = {styles.scrollContent}>
+//       <Text style = {styles.title}>Uzun Sayfa Başlığı</Text>
+
+//       <View style = {styles.card}><Text>Kart 1</Text></View>
+//       <View style = {styles.card}><Text>Kart 2</Text></View>
+//       <View style = {styles.card}><Text>Kart 3</Text></View>
+//       <View style = {styles.card}><Text>Kart 4</Text></View>
+//       <View style = {styles.card}><Text>Kart 5</Text></View>
+//       <View style = {styles.card}><Text>Kart 5435</Text></View>
+//       <View style = {styles.card}><Text>Kart 54</Text></View>
+//       <View style = {styles.card}><Text>Kart 57</Text></View>
+//       <View style = {styles.card}><Text>Kart 59</Text></View>
+//       <View style = {styles.card}><Text>Kart 50</Text></View>
+//       <View style = {styles.card}><Text>Kart 52</Text></View>
+//       <View style = {styles.card}><Text>Kart 25</Text></View>
+//       <View style = {styles.card}><Text>Kart 25</Text></View>
+//       <View style = {styles.card}><Text>Kart 115</Text></View>
+//       <View style = {styles.card}><Text>Kart 1355</Text></View>
+//   </ScrollView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   scrollContent: {
+//     padding: 16,
+//     paddingBottom: 30, // Listenin sonunda ekstra boşluk bırakıyoruz.
+//     backgroundColor: "#F5F7FA"
+//   },
+
+//   title: {
+//     fontSize: 20,
+//     fontWeight: "700",
+//     marginBottom: 12,
+//     color: "#202124"
+//   },
+
+//   card: {
+//     backgroundColor: "white",
+//     height: 70,
+//     borderRadius: 10,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     marginBottom: 10
+//   }
+// });
+
+
+// REUSABLE UI COMPONENTS
+// Kod tekrarını engellemek için modüler parçalar (StatCard, AppButton) oluşturulur.
+// Tıklama olayları için Pressable kullanılır ve onPress fonksiyonu prop olarak aktarılır.
+
+// import {Pressable, StyleSheet, Text, View} from "react-native";
+
+// interface StatCardProps{
+//   value: string;
+//   label: string;
+// }
+
+// function StatCard({value, label}: StatCardProps){
+//   return(
+//     <View style = {styles.statCard}>
+//       <Text style = {styles.statValue}>{value}</Text>
+//       <Text style = {styles.statLabel}>{label}</Text>
+//     </View>
+//   );
+// }
+
+// interface AppButtonProps {
+//   title: string;
+//   onPress: () => void;
+// }
+
+// function AppButton({title, onPress}: AppButtonProps){
+//   return(
+//     <Pressable style = {styles.button} onPress = {onPress}>
+//       <Text style = {styles.buttonText}>{title}</Text>
+//     </Pressable>
+//   );
+// }
+
+// export default function App() {
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.row}>
+//         <StatCard value = "12" label = "Project" />
+//         <StatCard value = "8" label = "Course" />
+//       </View>
+//       <AppButton title = "Save" onPress = {() => console.log("Pressed!")} />
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     padding: 16,
+//     justifyContent: "center",
+//     backgroundColor: "#F5F7FA" 
+//   },
+
+//   row: {
+//     flexDirection: "row",
+//     marginBottom: 16
+//   },
+
+//   statCard: {
+//     flex: 1,
+//     backgroundColor: "#FFF",
+//     borderRadius: 10,
+//     padding: 12,
+//     alignItems: "center",
+//     marginHorizontal: 4
+//   },
+
+//   statValue: {
+//     fontSize: 18,
+//     fontWeight: "700",
+//     color: "#7B1E3A",
+//   },
+
+//   statLabel: {
+//     fontSize: 11,
+//     color: "#665"
+//   },
+
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     borderRadius: 10,
+//     paddingVertical: 12,
+//     alignItems: "center"
+//   },
+
+//   buttonText: {
+//     color: "#FFF",
+//     fontSize: 14,
+//     fontWeight: "600"
+//   }
+// });
+
+// ALIŞTIRMA ORTA
+// Ekrandan daha uzun bir içeriği ScrollView içinde gösteriniz. 
+// En az sekiz adet kart veya paragraf koyunuz.
+// İçeriğin alt kenarında boşluk kalması için contentContainerStyle 
+// içine paddingBottom ekleyiniz.
+
+// import {ScrollView, StyleSheet, Text, View} from "react-native";
+
+
+// export default function App(){
+//   return(
+//     <View style = {styles.container}>
+//       <ScrollView contentContainerStyle = {styles.scrollContent}>
+//       <View style = {styles.card}><Text>Kart 1</Text></View>
+//       <View style = {styles.card}><Text>Kart 2</Text></View>
+//       <View style = {styles.card}><Text>Kart 3</Text></View>
+//       <View style = {styles.card}><Text>Kart 4</Text></View>
+//       <View style = {styles.card}><Text>Kart 5</Text></View>
+//       <View style = {styles.card}><Text>Kart 6</Text></View>
+//       <View style = {styles.card}><Text>Kart 7</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//       <View style = {styles.card}><Text>Kart 8</Text></View>
+//     </ScrollView>
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     marginTop: 40
+//   },
+//   scrollContent: {
+//     padding: 16,
+//     paddingBottom: 50,
+//     backgroundColor: "#234234"
+//   },
+
+//   card: {
+//     backgroundColor: "#D49922",
+//     borderColor: "rgba(0, 128, 255, 0.84)",
+//     borderWidth: 3,
+//     borderRadius: 10,
+//     height: 70,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     marginBottom: 10
+//   }
+// });
+
+// Alıştırma 3.7'de kaldın. Zor olan.
