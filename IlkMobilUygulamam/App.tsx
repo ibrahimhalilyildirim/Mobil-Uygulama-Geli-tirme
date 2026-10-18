@@ -3071,3 +3071,287 @@
 //   }
 // });
 
+// Örnek 4.2 Mini Görev Yöneticisi
+
+import {useState} from "react";
+import {Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
+import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+interface Task {
+  id: number;
+  title: string;
+  completed: boolean;
+}
+
+interface TaskItemProps {
+  task: Task;
+  onToggle: (id: number) => void;
+  onDelete: (id: number) => void;
+}
+
+function TaskItem({task, onToggle, onDelete}: TaskItemProps){
+  return(
+    <View style = {styles.taskRow}>
+      <Pressable
+        style = {styles.taskMain}
+        onPress = {() => onToggle(task.id)}
+      >
+        <Text style = {styles.mark}>
+          {task.completed ? "[x]" : "[ ]"}
+        </Text>
+
+        <Text
+          style = {[
+            styles.taskText,
+            task.completed && styles.completedText
+          ]}
+        >
+          {task.title}
+        </Text>
+      </Pressable>
+
+      <Pressable
+        style = {styles.deleteButton}
+        onPress = {() => onDelete(task.id)}
+      >
+        <Text style = {styles.deleteText}>Sil</Text>
+      </Pressable>
+    </View> 
+  );
+}
+
+function TaskScreen() {
+  const [taskText, setTaskText] = useState("");
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [error, setError] = useState("");
+
+  const addTask = () => {
+    if(taskText.trim() === ""){
+      setError("Görev adı boş bırakılamaz.");
+      return;
+    }
+
+    const newTask: Task = {
+      id: Date.now(),
+      title: taskText.trim(),
+      completed: false
+    };
+
+    setTasks([...tasks, newTask]);
+    setTaskText("");
+    setError("");
+  };
+
+  const toggleTask = (id: number) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id
+          ? {
+            ...task,
+            completed: !task.completed
+          }
+          : task
+    )
+  );
+};
+
+const deleteTask = (id: number) => {
+  setTasks(
+    tasks.filter((task) => task.id !== id)
+  );
+};
+
+const confirmDelete = (id: number) => {
+  Alert.alert(
+    "Görevi sil",
+    "Bu görevi silmek istediğinize emin misin?",
+    [
+      {
+        text: "iptal",
+        style: "cancel"
+      },
+      {
+        text: "sil",
+        onPress: () => deleteTask(id)
+      }
+    ]
+  );
+};
+
+const doneCount = tasks.filter(
+  (task) => task.completed
+).length;
+
+return (
+  <SafeAreaView
+    style = {styles.safe}
+    edges = {["top", "bottom"]}
+  >
+    <ScrollView contentContainerStyle = {styles.content}>
+      <Text style = {styles.title}>Görevlerim</Text>
+
+      <View style = {styles.inputRow}>
+        <TextInput
+          placeholder = "Yeni görev..."
+          value = {taskText}
+          onChangeText = {setTaskText}
+        />
+
+        <Pressable
+          style = {styles.addButton}
+          onPress = {addTask}
+        >
+          <Text style = {styles.addButtonText}>
+            Ekle
+          </Text>
+        </Pressable>
+        </View>
+
+        {error !== "" && (
+          <Text style = {styles.error}>{error}</Text>
+        )}
+
+        {tasks.length === 0 ? (
+          <Text style = {styles.emptyText}>
+            Henüz görev eklenmedi.
+          </Text>
+        ) : (
+          <Text style = {styles.counter}>
+            {tasks.length} görev, {doneCount} tamamlandı.
+          </Text>
+        )}
+
+        {tasks.map((task) => (
+          <TaskItem
+            key = {task.id}
+            task = {task}
+            onToggle = {toggleTask}
+            onDelete = {confirmDelete}
+          />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+export default function App(){
+  return(
+    <SafeAreaProvider>
+      <TaskScreen />
+    </SafeAreaProvider>
+  );
+}
+
+const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+    backgroundColor: "#F5F7FA",
+  },
+
+  content: {
+    padding: 20,
+    paddingBottom: 40
+  },
+
+  title: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#202124",
+    marginBottom: 16
+  },
+
+  inputRow: {
+    flexDirection: "row",
+    alignItems: "center"
+  },
+
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: "#CCCCCC",
+    borderRadius: 10,
+    backgroundColor: "#FFFFFF",
+    padding: 12,
+    fontSize: 16
+  },
+
+  addButton: {
+    backgroundColor: "#7B1E3A",
+    borderRadius: 10,
+    paddingVertical: 13,
+    paddingHorizontal: 18,
+    marginLeft: 8
+  },
+
+  addButtonText: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "600"
+  },
+
+  error: {
+    color: "#C62828",
+    fontSize: 13,
+    marginTop: 8
+  },
+  
+  counter: {
+    fontSize: 13,
+    color: "#666665",
+    marginTop: 14,
+    marginBottom: 10
+  },
+
+  emptyText: {
+    textAlign: "center",
+    color: "#999999",
+    fontSize: 14,
+    marginTop: 24
+  },
+
+  taskRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 10
+  },
+
+  taskMain: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+
+  mark: {
+    fontSize: 15,
+    color: "#7B1E3A",
+    marginRight: 10
+  },
+  
+  taskText: {
+    flex: 1,
+    fontSize: 16,
+    color: "#202124",
+  },
+
+  completedText: {
+    textDecorationLine: "line-through",
+    color: "#999999"
+  },
+
+  deleteButton: {
+    backgroundColor: "#FDECEC",
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    marginLeft: 8
+  },
+
+  deleteText: {
+    color: "#C62828",
+    fontSize: 13,
+    fontWeight: "600"
+  }
+});
