@@ -693,77 +693,77 @@
 
 // UYGULAMA Basit Sayaç
 
-import {useState} from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+// import {useState} from "react";
+// import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function App(){
-  const [count, setCount] = useState(0);
+// export default function App(){
+//   const [count, setCount] = useState(0);
 
-  return (
-    <View style = {styles.container}>
-      <Text style = {styles.label}>Sayaç</Text>
-      <Text style = {styles.count}>{count}</Text>
+//   return (
+//     <View style = {styles.container}>
+//       <Text style = {styles.label}>Sayaç</Text>
+//       <Text style = {styles.count}>{count}</Text>
 
-      <View style = {styles.row}>
-        <Pressable
-          style = {styles.button}
-          onPress = {() => setCount(count - 1)}
-        >
-          <Text style = {styles.buttonText}>-</Text>
-        </Pressable>
+//       <View style = {styles.row}>
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => setCount(count - 1)}
+//         >
+//           <Text style = {styles.buttonText}>-</Text>
+//         </Pressable>
 
-        <Pressable
-          style = {styles.button}
-          onPress = {() => setCount(0)}
-        >
-          <Text style = {styles.buttonText}>Sıfırla</Text>
-        </Pressable>
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => setCount(0)}
+//         >
+//           <Text style = {styles.buttonText}>Sıfırla</Text>
+//         </Pressable>
 
-        <Pressable
-          style = {styles.button}
-          onPress = {() => setCount(count + 1)}
-        >
-          <Text style = {styles.buttonText}>+</Text>
-        </Pressable>
-      </View>
-    </View>
-  );
-}
+//         <Pressable
+//           style = {styles.button}
+//           onPress = {() => setCount(count + 1)}
+//         >
+//           <Text style = {styles.buttonText}>+</Text>
+//         </Pressable>
+//       </View>
+//     </View>
+//   );
+// }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F3F4F6",
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  label: {
-    fontSize: 16,
-    color: "#4B5563"
-  },
-  count: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#7B1E3A",
-    marginVertical: 12
-  },
-  row: {
-    flexDirection: "row",
-    marginTop: 8
-  },
-  button: {
-    backgroundColor: "#7B1E3A",
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-    marginHorizontal: 6
-  },
-  buttonText: {
-    color: "#FFFFF",
-    fontSize: 16,
-    fontWeight: "bold"
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F3F4F6",
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   label: {
+//     fontSize: 16,
+//     color: "#4B5563"
+//   },
+//   count: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "#7B1E3A",
+//     marginVertical: 12
+//   },
+//   row: {
+//     flexDirection: "row",
+//     marginTop: 8
+//   },
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     paddingVertical: 12,
+//     paddingHorizontal: 20,
+//     borderRadius: 8,
+//     marginHorizontal: 6
+//   },
+//   buttonText: {
+//     color: "#FFFFF",
+//     fontSize: 16,
+//     fontWeight: "bold"
+//   }
+// });
 // Bir component'i birden çok kez kullandığımızda ne olur? Her kullanım kendi state'ine sahip olur. Bunu bir beğeni butonu ile görelim.
 
 // import {Pressable, StyleSheet, Text, View} from "react-native";
@@ -1940,3 +1940,407 @@ const styles = StyleSheet.create({
 //         height: 100
 //     }
 // });
+
+// Padding kutunun içine, margin kutunun dışına boşluk koyar.
+// Bir karta margin verirsek kart aynı kalır ama komşusuyla arasındaki mesafe büyür.
+
+// justifyContent her zaman ana eksende ve alignItems her zaman çapraz eksende çalışır.
+// Ancak flexDirection'ı değiştirdiğimizde bu iki property'nin hangi yönde iş yaptığı da değişir.
+
+// Responsive tasarım: Arayüzün, çalştığı cihazın ekran boyutuna göre kendini bozulmadan düzenleyebilmesidir.
+
+// Safe area: Adından da anlaşılacağı üzere ekranın sistem ögeleriyle çakışmayan ve içeriğin güvenle gösterilebileceği bölgedir.
+
+// Yerel görsel.
+// Projenin içerisinde bulunan bir dosya require() ile yüklenir.
+
+{/* <Image
+  style = {styles.logo}
+  source = {require("./assets/icon.png")}
+/> */}
+
+// Uzak görsel.
+// İnternetten gelen bir görselde source bir object'dir ve "uri" property'si taşır.
+
+// <Image
+//   style = {styles.logo}
+//   source = {{uri: "https.//reactnative.dev/img/tiny_logo.png"}}
+// />
+
+// require() ile gelen görsellerde width ve height değerleri opsiyoneldir.
+// Ancak internetten uri ile gelen görsellerde bu zorunludur. Boyutları belirtilmezse
+// görsel hiç görünmez ve herhangi bir hata alınmaz.
+
+// Kare bir görseli daireye çevirmenin yolu, borderRadius değerini genişliğin yarısına eşitlemektir.
+
+// cover: Görsel kutuyu tamamen doldurur. Taşan kısım kırpılır. Varsayılan değerdir.
+// contain: Görselin tamaı kutuya sığdırılır. Kırpma olmaz ama kutuda boşluk kalabilir.
+
+
+// Kaydırılabilir bir ekrana sahip olmak için ScrollView kullanılır.
+// import {ScrollView, StyleSheet, Text} from "react-native";
+
+// function AboutScreen(){
+//   return (
+//     <ScrollView contentContainerStyle = {styles.content}>
+//       <Text style = {styles.title}>Hakkımda</Text>
+//       {/* ekrandan uzun içerik */}
+//     </ScrollView>
+//   );
+// }
+
+// ScrollView'da style kaydırma penceresine, contentContainerStyle ise içeriğe uygulanır.
+// İç boşluk(padding) ve içeriğin hizalanması contentContainerStyle içine yazılır.
+
+// AYRICA ScrollView'ın flex: 1 yazılmaz. Bu içeriği ekran boyutuna sıkıştırır ve kaydırılması planlanan ekranın
+// tek bir ekran olması anlamına gelir. Her şey sıkıştığı için çok küçük görünür.
+
+// ScrollView çok fazla çocuğunun olacağı durumlarda kullanılmaz. Çünkü ScrollView her şeyi aynı anda oluşturur.
+// Bu da çok çok aşağıda kalan şeylerin bile ilk andan yüklemesi ve uygulamanın yavaşlaması anlamına gelir.
+// Bu sebeple böyle durumlarda FlatList kullanılır. İlerliyen haftalarda göreceğiz.
+
+// Aynı yapı çok kez tekrar ediyorsa o yapı component haline getirilmelidir. İş yükünü azaltır.
+
+// Yüksekliğin yarısına eşit bir borderRadius'un kareyi 
+
+// Bir butonun duruma göre iki farklı görünümü varsa bu boolean bir değer ile belirlenir.
+
+// Bir component'in props sayısı altıyı geçiyorsa, muhtelemen onu ikiye bölmenin zamanı gelmiştir.
+
+// Genel kabul fontSize'lar.
+
+// Başlık 24-28.
+// Alt başlık 18-20.
+// Normal metin 14-16.
+// Yardımcı metin 12-14.
+
+// Font boyutlar ve renk paletleri her ekran için 3-4 olduğu durumda normal kabul edilir.
+
+// // ÖRNEK 3.1 ÖĞRENCİ PROFİL EKRANI
+// import {Image, Pressable, ScrollView, StyleSheet, Text, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+// interface StatCardProps {
+//   value: string;
+//   label: string;
+// }
+
+// function StatCard({value, label}: StatCardProps) {
+//   return(
+//     <View style = {styles.statCard}>
+//       <Text style = {styles.statValue}>{value}</Text>
+//       <Text style = {styles.statLabel}>{label}</Text>
+//     </View>
+//   );
+// }
+
+// interface BadgeProps{
+//   label: string;
+// }
+// function Badge({label}: BadgeProps){
+//   return(
+//     <View style = {styles.badge}>
+//       <Text style = {styles.badgeText}>{label}</Text>
+//     </View>
+//   );
+// }
+
+// interface AppButtonProps{
+//   title: string;
+//   onPress: () => void;
+// }
+
+// function AppButton({title, onPress}: AppButtonProps){
+//   return(
+//     <Pressable style = {styles.button} onPress = {onPress}>
+//       <Text style = {styles.buttonText}>{title}</Text>
+//     </Pressable>
+//   );
+// }
+
+// const interests: string[] = [
+//   "Artifical Intelligence",
+//   "Game Developing",
+//   "UI Design"
+// ];
+
+// function ProfileScreen(){
+//   return(
+//     <SafeAreaView style = {styles.safe} edges = {["top", "bottom"]}>
+//       <ScrollView contentContainerStyle = {styles.content}>
+
+//         <View style = {styles.header}>
+//           <Image
+//             style = {styles.avatar}
+//             source = {require("./assets/myAssets/Benn.png")}
+//           />
+//             <Text style = {styles.name}>İbrahim Halil Yıldırım</Text>
+//             <Text style = {styles.department}>Computer Engineering</Text>
+//         </View>
+
+//         <View style = {styles.stats}>
+//           <StatCard value = "3" label = "Class"/>
+//           <StatCard value = "12" label = "Project"/>
+//           <StatCard value = "8" label = "Course"/>
+//         </View>
+
+//           <Text style = {styles.sectionTitle}>About me.</Text>
+//           <Text style = {styles.paragraph}>
+//           I'm working about mobil application and game design. I'm learning to design UI with React Native.
+//           </Text>
+
+//           <Text style = {styles.sectionTitle}>Interests</Text>
+//         <View style = {styles.badges}>
+//           {interests.map((item) => (
+//             <Badge key = {item} label = {item} />
+//           ))}
+//         </View>
+
+//         <AppButton
+//           title = "Edit Profile"
+//           onPress = {() => console.log("Editing Profile...")}
+//         />
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// }
+
+// export default function App(){
+//   return(
+//     <SafeAreaProvider>
+//       <ProfileScreen />
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   safe: {
+//     flex: 1,
+//     backgroundColor: "#F5F7FA"
+//   },
+  
+//   content: {
+//     padding: 20,
+//     paddingBottom: 32
+//   },
+//   header: {
+//     alignItems: "center",
+//     marginBottom: 20
+//   },
+
+//   avatar: {
+//     width: 100,
+//     height: 100,
+//     borderRadius: 50,
+//     marginBottom: 12,
+//     backgroundColor: "#E37ED"
+//   },
+
+//   name: {
+//     fontSize: 24,
+//     fontWeight: "700",
+//     color: "#202124"
+//   },
+
+//   department: {
+//     fontSize: 14,
+//     color: "#666665",
+//     marginTop: 2
+//   },
+
+//   stats: {
+//     flexDirection: "row",
+//     marginBottom: 20
+//   },
+
+//   statCard: {
+//     flex: 1,
+//     backgroundColor: "#FFFFFF",
+//     borderRadius: 16,
+//     paddingVertical: 16,
+//     alignItems: "center",
+//     marginHorizontal: 4
+//   },
+
+//   statValue: {
+//     fontSize: 20,
+//     fontWeight: "700",
+//     color: "#7B1E3A"
+//   },
+
+//   statLabel: {
+//     fontSize: 12,
+//     color: "#666665",
+//     marginTop: 2
+//   },
+
+//   sectionTitle: {
+//     fontSize: 18,
+//     fontWeight: "600",
+//     color: "#202124",
+//     marginBottom: 8
+//   },
+
+//   paragraph: {
+//     fontSize: 14,
+//     lineHeight: 20,
+//     color: "#444444",
+//     marginBottom: 20
+//   },
+
+//   badges: {
+//     flexDirection: "row",
+//     flexWrap: "wrap", // wrap sayesinde etiketler satıra sığmadığında alt satıra geçmelerini sağlarız.
+//     marginBottom: 24
+//   },
+
+//   badge: {
+//     backgroundColor: "#E8EDF5",
+//     borderRadius: 999,
+//     paddingHorizontal: 12,
+//     paddingVertical: 6,
+//     marginRight: 8,
+//     marginBottom: 8
+//   },
+
+//   badgeText: {
+//     fontSize: 13,
+//     color: "#31507A"
+//   },
+
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     borderRadius: 12,
+//     paddingVertical: 14,
+//     alignItems: "center"
+//   },
+
+//   buttonText: {
+//     color: "#FFFFFF",
+//     fontSize: 16,
+//     fontWeight: "600"
+//   }
+// });
+
+// İKİNCİ UYGULAMA DASHBOARD
+
+// const stats = [
+//   {id: 1, value: "12", label: "Projeler"},
+//   {id: 2, value: "8", label: "Dersler"},
+//   {id: 3, value: "5", label: "Görevler"}
+// ];
+
+// function Dashboard() {
+//   return(
+//     <View style = {styles.row}>
+//       {stats.map((item) =>(
+//         <Statcard
+//           key = {item.id}
+//           value = {item.value}
+//           label = {item.label
+//         />
+//       ))}
+//     </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   dashboard: {
+//     padding: 20,
+//   },
+
+//   title: {
+//     fontSize: 24,
+//     fontWeight: "700",
+//     color: "#202124",
+//     marginBottom: 12
+//   },
+//   row: {
+//     flexDirection: "row"
+//   }
+// });
+
+
+// HENÜZ BİTMEDİ. ARA VERİLDİ.
+// import {Image, Pressable, ScrollView, StyleSheet, Text, View} from "react-native";
+
+// interface TechnologyCardProps {
+//   title: string;
+//   description: string;
+//   badge: string:
+// }
+
+// function TechnologyCard({title, description, badge}: TechnologyCardProps){
+//   return(
+//       <View style = {styles.technologyCard}>
+//     <Text style = {styles.technologyTitle}>{title}</Text>
+//     <Text style = {styles.technologyDescription}>{description}</Text>
+//     <Text style = {styles.technologyBadge}>{badge}</Text>
+//   </View>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+
+// });
+
+// ŞİMDİLİK ERTELENİYOR // ÖRNEK 3.2 TEKRAR KULLANILABİLİR ÜRÜN KARTLARI
+
+// Alıştırma 3.1 ORTA
+
+import {StyleSheet, Text, View} from "react-native";
+import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+interface ProfileCardProps{
+  name: string;
+  department: string;
+}
+
+function ProfileCard({name, department}: ProfileCardProps){
+  return (
+    <View style = {styles.profileCard}>
+      <Text style = {styles.profileName}>{name}</Text>
+      <Text style = {styles.profileDepartment}>{department}</Text>
+    </View>
+  );
+}
+
+export default function App(){
+  return(
+    <SafeAreaProvider>
+      <SafeAreaView style = {styles.container}>
+        <ProfileCard name = "İbrahim Halil Yıldırım" department = "Computer Engineering" />
+        <ProfileCard name = "Ayşe Demir" department = "Software Engineering" />
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  profileCard: {
+    backgroundColor: "#eccc6e",
+    paddingBottom: 40,
+    paddingHorizontal: 20,
+    borderRadius: 15,
+    marginBottom: 10,
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  
+  profileName: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "black",
+    marginBottom: 5,
+    paddingTop: 20,
+  },
+
+  profileDepartment: {
+    fontSize: 18,
+    color: "rgba(48, 48, 48, 0.47)",
+  }
+});
