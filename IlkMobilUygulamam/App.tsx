@@ -1,5 +1,7 @@
 // // Çalıştırmak için cd IlkMobilUygulamam ve ardından npx expo start
 
+// import { TextInput } from "react-native/types_generated/index";
+
 // / / / //  // / / / / / / / // import { useState } from "react";
 
 // import { Pressable } from "react-native";
@@ -2759,3 +2761,313 @@
 // });
 
 // Alıştırma 3.7'de kaldın. Zor olan.
+
+// import {TextInput} from "react-native";
+
+// <TextInput
+//   placeholder = "Adınızı giriniz."
+// />
+
+// input: {
+//   borderWith: 1,
+//   borderColor: "#CCCCCC",
+//   borderRadius: 10,
+//   padding: 12,
+//   fontSize: 16
+// }
+
+// TextInput'a stil vermek önemlidir.
+
+// placeholder, alan boşken gösterilen soluk açıklama yazısıdır.
+{/* <TextInput
+  placeholder = "Entry your name."
+/> */}
+
+// value, input'un ekranda göstereceği değerdir. Bu değer koddan verilir.
+
+{/* <TextInput
+  value = {name}
+/> */}
+
+/// onChangeText, kullanıcı metni her değiştirdiğinde çağrılan function'dır ve yeni metni argüman olarak verir.
+// const [name, setName] = useState("");
+
+// <TextInput
+//   style = {styles.input}
+//   placeholder = "Adınızı giriniz."
+//   value = {name}
+//   onChangeText = {setName}
+// />
+
+// Ekranda görünen metin klavyeden gelmez. state'ten okunduğu için görünür.
+
+// Controlled input, ekranda gösterdiği değer React state tarafından
+// kontrol edilen giriş alanıdır.
+// Input'un kendine ait bir "hafızası" yoktur; ne göstereceğini her zaman state'ten okur.
+
+// const [name, setName] = useState("");
+
+// <TextInput
+//   value = {name}
+//   onChangeText = {setName}
+// />
+
+// interface Task{
+//   id: number;
+//   title: string;
+// }
+
+// const [tasks, setTasks] = useState<Task[]>([]);
+
+// const newTask: Task = {
+//   id: Date.now(),
+//   title: taskText.trim()
+// };
+
+// setTask([
+//   ...tasks,
+//   newTask
+// ]);
+
+// setTaskText("");
+
+// Silme işlemi filter() ile yapılır:
+// Olan şey id'si belirlenen task hariç diğer tüm kayıtlı task'lerin yeni bir array'e eklenmesidir.
+// const deleteTask = (id: number) => {
+//   setTask(
+//     tasks.filter(task => task.id !== id)
+//   );
+// };
+
+// Kısaca silmek, kalanları seçmektir.
+
+// interface Task {
+//   id: number;
+//   title: string;
+//   completed: boolean;
+// }
+
+// const toggleTask = (id: number) => {
+//   setTask(
+//     tasks.map(task =>
+//       task.id === id
+//         ? {
+//           ...task, // Bu satırı yazmak çok kritik.
+//           completed: !task.completed
+//         }
+
+//         : task
+//     )
+//   );
+// };
+
+// // CRUD : Create, Read, Update, Delete
+
+
+// // Kullanıcının yaptığı işlemi görebilmesi için en kısa yol Alert kullanmaktır.
+// // import {Alert} form "react-native";
+
+// // Alert.alert(
+// //   "Başarılı",
+// //   "Kayıt Eklendi."
+// // );
+
+// // Silinen veri geri gelmez. Bu sebeple emin olmak adına uygulamanın teyit etmesi tavsiye edilir.
+
+// import {Alert} from "react-native";
+// const confirmDelete = (id: number) => {
+//   Alert.alert(
+//     "Görevi sil",
+//     "Bu görevi silmek istediğinizden emin misiniz?",
+//     [
+//       {
+//         text: "İptal",
+//         style: "cancel"
+//       },
+//       {
+//         text: "Sil",
+//         onPress: () => deleteTask(id)
+//       }
+//     ]
+//   );
+// };
+
+// <AppButton
+//   title = "Kaydet"
+//   onPress = {saveData}
+// />
+
+// interface TaskItemProps {
+//   task: Task,
+//   onToggle: (id: number) => void;
+//   onDelete: (id: number) => void;
+// }
+
+
+
+///////////////////////////////////////////////7
+///////////////////////////////////////////////7
+///////////////////////////////////////////////7
+///////////////////////////////////////////////7
+///////////////////////////////////////////////7
+// // Kullanıcı Kayıt Formu
+// import {useState} from "react";
+// import {Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+// interface AppButtonProps {
+//   title: string;
+//   onPress: () => void;
+// }
+
+// function AppButton({title, onPress}: AppButtonProps) {
+//   return(
+//     <Pressable style = {styles.button} onPress = {onPress}>
+//       <Text style = {styles.buttonText}>{title}</Text>
+//     </Pressable>
+//   );
+// }
+
+// function RegisterForm() {
+//   const [name, setName] = useState(" ");
+//   const [email, setEmail] = useState(" ");
+//   const [city, setCity] = useState(" ");
+//   const [error, setError] = useState(" ");
+
+//   const saveUser = () => {
+//     if(name.trim() === ""){
+//       setError("Ad soyad alanı boş bırakılamaz.");
+//       return;
+//     }
+//     if(email.trim() === ""){
+//       setError("E-posta alanı boş bırakılamaz.");
+//       return;
+//     }
+//     if(city.trim() === ""){
+//       setError("Şehir alanı boş bırakılamaz");
+//       return;
+//     }
+//     setError("");
+
+//     Alert.alert(
+//       "Başarılı",
+//       name.trim() + " kaydedildi."
+//     );
+
+//     setName("");
+//     setEmail("");
+//     setCity("");
+//   };
+
+//   return(
+//     <SafeAreaView
+//       style = {styles.safe}
+//       edges = {["top", "bottom"]}
+//     >
+//       <ScrollView contentContainerStyle = {styles.content}>
+//         <Text style = {styles.title}>
+//           Kullanıcı Kayıt Formu
+//         </Text>
+        
+//         <Text style = {styles.label}>Ad soyad</Text>
+//         <TextInput
+//           style = {styles.input}
+//           placeholder = "Ad soyad"
+//           value = {name}
+//           onChangeText = {setName}
+//         />
+
+//         <Text style = {styles.label}>E-posta</Text>
+//         <TextInput
+//           style = {styles.input}
+//           placeholder = "örnek@gmail.com"
+//           keyboardType = "default"
+//           autoCapitalize = "none"
+//           value = {email}
+//           onChangeText = {setEmail}
+//         />
+
+//         <Text style = {styles.label}>Şehir</Text>
+//         <TextInput
+//           style = {styles.input}
+//           placeholder = "Örn. Şanlıurfa"
+//           value = {city}
+//           onChangeText = {setCity}
+//         />
+
+//         {error !== "" && (
+//           <Text style = {styles.error}>{error}</Text>
+//         )}
+
+//         <AppButton
+//           title = "Kaydet"
+//           onPress = {saveUser}
+//         />
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// }
+
+// export default function App(){
+//   return(
+//     <SafeAreaProvider>
+//       <RegisterForm />
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   safe: {
+//     flex: 1,
+//     backgroundColor: "#F5F7FA"
+//   },
+
+//   content: {
+//     padding: 20
+//   },
+
+//   title: {
+//     fontSize: 22,
+//     fontWeight: "700",
+//     color: "#202124",
+//     marginBottom: 20
+//   },
+
+//   label: {
+//     fontSize: 14,
+//     fontWeight: "600",
+//     color: "#444444",
+//     marginBottom: 6
+//   },
+
+//   input: {
+//     borderWidth: 1,
+//     borderColor: "#CCCCCC",
+//     borderRadius: 10,
+//     backgroundColor: "#FFFFFF",
+//     padding: 12,
+//     fontSize: 16,
+//     marginBottom: 14
+//   },
+
+//   error: {
+//     color: "#C62828",
+//     fontSize: 13,
+//     marginBottom: 10
+//   },
+
+//   button: {
+//     backgroundColor: "#7B1E3A",
+//     borderRadius: 12,
+//     paddingVertical: 14,
+//     alignItems: "center",
+//     marginTop: 6
+//   },
+
+//   buttonText: {
+//     color: "#FFFFFF",
+//     fontSize: 16,
+//     fontWeight: "600"
+//   }
+// });
+
