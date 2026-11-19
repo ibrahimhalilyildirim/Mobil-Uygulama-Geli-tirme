@@ -1,5 +1,8 @@
 // // // Çalıştırmak için cd IlkMobilUygulamam ve ardından npx expo start
 
+import { useEffect } from "react";
+import { FlatList } from "react-native/types_generated/index";
+
 // // import { TextInput } from "react-native/types_generated/index";
 
 // // / / / //  // / / / / / / / // import { useState } from "react";
@@ -3629,100 +3632,1187 @@
 // Ders Uygulaması //
 // Ödevi bitir.
 
-import {StyleSheet, Text, View, FlatList, Pressable} from "react-native";
+// // import {StyleSheet, Text, View, FlatList, Pressable} from "react-native";
 
-interface Task {
-  id: number;
-  title: string;
-  course: string;
-  completed: boolean;
-}
-
-interface TaskCardProps {
-  task : Task;
-}
-
-// // export default function App(){
-// //   return(
-// //     <View style = {styles.container}>
-// //       <Text> Deneme Yazısı!</Text>
-// //     </View>
-// //   );
+// // interface Task {
+// //   id: number;
+// //   title: string;
+// //   course: string;
+// //   completed: boolean;
 // // }
 
+// // interface TaskCardProps {
+// //   task : Task;
+// // }
 
-export default function App(){
-  return(
-    TaskCard
-  )
-}
-function TaskCard({task} : TaskCardProps) {
+// // // // export default function App(){
+// // // //   return(
+// // // //     <View style = {styles.container}>
+// // // //       <Text> Deneme Yazısı!</Text>
+// // // //     </View>
+// // //   );
+// // // }
+
+
+// export default function App(){
+//   return(
+//     TaskCard
+//   )
+// }
+// function TaskCard({task} : TaskCardProps) {
   
-  return (
-    <View style = {styles.container}>
-      <View style = {styles.taskBox}>
+//   return (
+//     <View style = {styles.container}>
+//       <View style = {styles.taskBox}>
 
-        <Text style = {styles.title}>Çalışma Görevlerim</Text>
+//         <Text style = {styles.title}>Çalışma Görevlerim</Text>
         
-      <Pressable style = {styles.completeTask} onPress = {completeTask}>
-        <Text style = {styles.completeTask}>Tamamla</Text>
-      </Pressable>
+//       <Pressable style = {styles.completeTask} onPress = {completeTask}>
+//         <Text style = {styles.completeTask}>Tamamla</Text>
+//       </Pressable>
 
 
 
-    </View>
-      </View>
-  )
-}
+//     </View>
+//       </View>
+//   )
+// }
 
-function completeTask(){
-  console.log("Try");
-}
+// function completeTask(){
+//   console.log("Try");
+// }
 
-const tasks : Task[] = [
-  {id: 1, title: "Mobil Uygulama", course: "React Native tekrar et.", completed: false},
-  {id: 2, title: "Matematik", course: "Lineer Cebir soruları çöz.", completed: false},
-  {id: 3, title: "Veri Tabanı", course: "Veri Tabanı ödevini yap.", completed: false},
-  {id: 4, title: "Özel Öğretim Yöntemleri", course: "Sunum hazırla.", completed: false}
-];
+// const tasks : Task[] = [
+//   {id: 1, title: "Mobil Uygulama", course: "React Native tekrar et.", completed: false},
+//   {id: 2, title: "Matematik", course: "Lineer Cebir soruları çöz.", completed: false},
+//   {id: 3, title: "Veri Tabanı", course: "Veri Tabanı ödevini yap.", completed: false},
+//   {id: 4, title: "Özel Öğretim Yöntemleri", course: "Sunum hazırla.", completed: false}
+// ];
 
-// const renderTask = ({
-//   item
-// }: {
-//   item = Task;
-// }) => (
-//   <TaskCard task = {item} />
+// // const renderTask = ({
+// //   item
+// // }: {
+// //   item = Task;
+// // }) => (
+// //   <TaskCard task = {item} />
+// // );
+
+// // return (
+// //   <FlatList
+// //     data = {tasks}
+// //     renderItem={}
+// // )
+
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center"
+//   },
+//   title: {
+//     fontWeight: "bold",
+//     fontSize: 13,
+//     color: "black",
+//   },
+//   taskBox: {
+//     height: 15,
+//     width: 150,
+//     backgroundColor: "blue",
+//     borderRadius: 13
+//   },
+//   completeTask: {
+//     height: 10,
+//     width: 50,
+//     borderRadius: 15,
+//     color: "yellow"
+//   }
+
+// })
+
+// VİZE ÖNCESİ
+
+// Veri parent'tan geliyorsa = props
+// Bu veri zamanla değişecek ve ekranı güncelleyecekse = useState
+// Bu veri array ise = map/filter/find
+// Bu veri tek object ise = nokta ile alan
+// Her elemanı dönüştürüyor muyum = map()
+// Birden fazla elemanı seçiyor/eliyor muyum = filter()
+// Tek bir eleman mı arıyorum = find()
+// Kullanıcıdan metin mi alıyorum = TextInput + value + onChangeText
+// Uzun, veri tabanlı bir liste mi gösteriyorum = FlatList
+// Başka ekrana mı gideceğim = router.push / Link
+// Hangi kaydın açıldığını mı taşıyorum = [id].tsx + params
+// İnternetten veri mi bekliyorum = async / await + fetch
+// Ekran açılınca bir kez mi çalışmalı = useEffect(() => {...}, [])
+
+// let ile tanımlanan değişkene yeniden değer atanabilir.
+// === hem değeri hem tipi karşılaştırılır.
+
+// Object = Birbirleriyle ilgili verileri anahtar : değer çiftleri olarak bir arada tutar.
+// Örnek
+
+// const student = {
+//   id: 1,
+//   name: "Ayşe",
+//   department: "Bilgisayar"
+// };
+
+// Array = sırali bir değer listesidir. Mobil uygulamalarda listeler hep object array'i olarak tutulur.
+// İndeks 0'dan başlar. length - 1 = son elemanın indeksi.
+
+// map() her elemanı dönüştürür. Sonuç aynı uzunluktaki yeni array'dir.
+// filter() koşulu true olan elemanları seçer; sonuç yeni array'dir. Hiçbiri uymazsa [] döner.
+// find() koşulu sağlayan ilk elemanı döndürür; sonuç tek elemandır. Hiçbiri uymazsa undefined döndürür.
+
+// Spread operator(...) bir array'in elemanlarını ya da bir object'in alanlarını yeni bir array/object'in içine açar.
+// Destructuring, array veya object'ten değerleri tek satırda variable'lara çıkarmaktır. 
+
+// const oldTasks = [
+//   {id: 1, title: "Ders"}
+// ];
+
+// const newTask = {
+//   id: 2,
+//   title: "Ödev"
+// };
+
+// const tasks = [
+//   ...oldTasks,
+//   newTask // oldTask'in sonuna newTask eklenir ve bu yeni bir array olur (tasks array'i). oldTask array'ine bir şey olmaz.
+// ];
+
+// const student = {name: "Ali", grade: 2};
+// const updated = {...student, grade: 3};
+
+// const {name, grade} = student;
+// const [first, second] = [10, 20];
+
+// koşul ? A : B ifadesi koşul sağlanırsa A'yı döndürür sağlanmazsa B'yi döndürür.
+
+// Interface = bir object'in şeklini(hangi alanlara ve hangi tiplere sahip olacağını) tanımlar.
+// Interface bir değer üretmez; yalnızca kontrol kuralıdır.
+// PascalCase geçerlidir.
+// city?: string; = isteğe bağlı alan demektir. Doldurulmasa bile hata alınmaz. (Optional property)
+
+// Component = UI'ın kendi başına anlamlı, yeniden kullanılabilir bir parçasıdır.
+// ReactNative'de component bir function'dır ve JSX döndürür. Ekran, component'lerin iç içe girdiği bir component tree'dir.
+// Component'ler PascalCase'dir.
+// JSX döndürür.
+
+// Props = Parent component'ten child component'e gönderilen verilerdir.
+// Component'i bir function gibi düşünürsek props onun parametreleridir.
+// Aynı StudentCard farklı props ile farklı öğrencileri gösterir reusable component'in anahtarı budur.
+// Props'un tipi bir props interface'i ile tanımlanır.
+// Props tek yönlüdür.
+// Child, aldığı props'u değiştirmez (read-only).
+
+// interface StudentCardProps {
+//   name: string;
+//   department: string;
+// }
+
+// function StudentCard({ name, department }: StudentCardProps) {
+//   return (
+//     <View>
+//       <Text>{name}</Text>
+//       <Text>{department}</Text>
+//     </View>
+//   );
+// }
+
+// <StudentCard
+//   name = "Ayşe"
+//   department = "Bilgisayar"
+// />
+
+
+// STATE
+
+// State, component'in kendi yönettiği ve zamanla değişebilen verisidir. State değiştiğinde React component'i yeniden çalıştırır (re-render) ve ekran güncellenir. State useState hook'u ile oluşturulur. 
+// Kısaca hook: "React, bunu benim için hatırla/yönet" deme yoludur.
+
+// const [count, setCount] = useState(0);
+// count : anlık değer, setCount : değişince alacağı değer.
+// useState(0) sadece ilk render'da kullanılır. Başlangıç değeri demektir.
+
+// import {useState} from "react";
+// import {Pressable, Text, View} from "react-native";
+
+// export default function Counter() {
+//   const [count, setCount] = useState(0); // ilk render için useState(0) diyoruz.
+//   return (
+//     <View>
+//       <Text>Sayaç: {count}</Text>
+
+//       <Pressable onPress = {() => setCount(count + 1)}>
+//         <Text>Artır</Text>
+//       </Pressable>
+
+//       <Pressable onPress = {() => setCount(0)}>
+//         <Text>Sıfırla</Text>
+//       </Pressable>
+//     </View>
+//   );
+// }
+
+// koşul ? A : B iki seçenekten birini gösterir.(True = A, False = B)
+// koşul && A koşul doğruysa A'yı gösterir, değilse hiçbir şey göstermez.
+// Örnek:
+// {girisYapti && <Text> 3 yeni bildirimin var.</Text>}
+
+// padding = içerik ile kenar arası
+// border = kenar çizgisi
+// margin = kutunun dışındaki, komşulara olan boşluk
+
+// React Native'de layout FlexBox ile kurulur. Bir container'ın çocuklarının nasıl dizileceğini dört property belirler.
+// flexDirection = hangi yöne dizilsin, justifyContent = (main axis üzerinde nasıl dağılsın)
+// alignItems = (cross axis üzerinde nasıl hizalansın), flex = boş alanı ne oranda paylaşsın
+//  ReactNative'de varsayılan flexDirection : "column" dur.
+// Main axis = flexDirection yönü. Cross axis = Main axis'e dik olan yön.
+// justifyContent = main axis, alignItems = cross axis
+
+// Hafta 2 Uygulaması
+// import {Text, View, Pressable, StyleSheet, ScrollView} from "react-native";
+// import {useState} from "react";
+
+// interface Student {
+//   id: number;
+//   name: string;
+//   department: string;
+//   grade: number;
+//   city: string
+// }
+
+// interface StudentCardProps {
+//   name: string;
+//   department: string;
+//   grade: number;
+//   city: string
+// }
+
+// // component'ler function'dır unutma.
+// function StudentCard({name, department, grade, city} : StudentCardProps) {
+//   // Her kartın kendi state'i var.
+//   const [detaylar, setDetaylar] = useState(false);
+
+//   function detayGoster() {
+//     setDetaylar(!detaylar);
+//   }
+
+//   return (
+//     <View style = {styles.card}>
+//       <Text style = {styles.name}>{name}</Text>
+//       <Text style = {styles.text}>{department}</Text>
+
+//       {detaylar && (
+//         <View style = {styles.details}>
+//           <Text style = {styles.text}>Sınıf: {grade}</Text>
+//           <Text style = {styles.text}>Şehir: {city}</Text>
+//         </View>
+//       )}
+
+//       <Pressable style = {styles.button} onPress = {detayGoster}>
+//         <Text style = {styles.buttonText}>
+//           {detaylar ? "Detay gizle" : "Detay göster"}
+//         </Text>
+//       </Pressable>
+//     </View>
+//   );
+// }
+
+// const students: Student[] = [
+//   {id: 1, name: "İbrahim", department: "Bilgisayar", grade: 3, city: "Şanlıurfa"},
+//   {id: 2, name: "Harun", department: "Bilgisayar", grade: 3, city: "Kilis"},
+//   {id: 3, name: "Faruk", department: "Bilgisayar", grade: 2, city: "İstanbul"},
+//   {id: 4, name: "Elif", department: "ELT", grade: 3, city: "Malatya"},
+//   {id: 5, name: "Sinem", department: "Yazılım", grade: 3, city: "Malatya"}
+// ]
+
+// export default function App() {
+//   return (
+//     <ScrollView style = {styles.container}>
+//       {students.map((student) => (
+//         <StudentCard
+//           key = {student.id}
+//           name = {student.name}
+//           department = {student.department}
+//           grade = {student.grade}
+//           city = {student.city}
+//         />
+//       ))}
+//     </ScrollView>
+//   );
+// }
+
+
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#F2F2F2",
+//     padding: 20,
+//     paddingTop: 60
+//   },
+
+//   card: {
+//     backgroundColor: "#FFF",
+//     padding: 16,
+//     marginBottom: 12,
+//     borderRadius: 12
+//   },
+
+//   name: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "black"
+//   },
+
+//   text: {
+//     fontSize: 16,
+//     color: "black"
+//   },
+
+//   details: {
+//     marginTop: 8
+//   },
+
+//   button: {
+//     marginTop: 12,
+//     paddingVertical: 8,
+//     paddingHorizontal: 12,
+//     borderRadius: 8,
+//     alignSelf: "flex-start",
+//     backgroundColor: "rgba(120,255,120,0.52)",
+//     borderWidth: 2,
+//     borderColor: "rgba(92,9,9,0.91)"
+//   },
+
+//   buttonText: {
+//     fontSize: 16,
+//     color: "black"
+//   }
+// });
+
+// Hafta 3 Uygulaması
+
+// import {Image, Pressable, ScrollView, StyleSheet, Text, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+// interface StatCardProps {
+//   value: string;
+//   label: string;
+// }
+
+// function StatCard({value, label} : StatCardProps) {
+//   return (
+//     <View style = {styles.statCard}>
+//       <Text style = {styles.statValue}>{value}</Text>
+//       <Text style = {styles.statLabel}>{label}</Text>
+//     </View>
+//   );
+// }
+
+// interface BadgeProps {
+//   label: string;
+// }
+
+// function Badge ({label} : BadgeProps) {
+//   return (
+//     <View style = {styles.badge}>
+//       <Text style = {styles.badgeText}>{label}</Text>
+//     </View>
+//   );
+// }
+
+// interface AppButtonProps {
+//   title: string;
+//   onPress: () => void;
+// }
+
+// function AppButton({title, onPress}: AppButtonProps) {
+//   return (
+//     <Pressable style = {styles.button} onPress = {onPress}>
+//       <Text style = {styles.buttonText}>{title}</Text>
+//     </Pressable>
+//   );
+// }
+
+// const interests: string[] = [
+//   "Yapay zekâ",
+//   "Mobil",
+//   "Veri Bilimi"
+// ];
+
+// function ProfileScreen() {
+//   return (
+//     <SafeAreaView style = {styles.safe} edges = {["top", "bottom"]}>
+//       <ScrollView contentContainerStyle = {styles.content}>
+
+//         <View style = {styles.header}>
+//           <Image style = {styles.avatar}
+//             source = {require("./assets/Ben.jpg")}
+//           />
+//           <Text style = {styles.name}>İbrahim Halil Yıldırım</Text>
+//           <Text style = {styles.department}>Bilgisayar Mühendisliği</Text>
+//         </View>
+
+//         <View style = {styles.stats}>
+//           <StatCard value = "3" label = "Sınıf" />
+//           <StatCard value = "12" label = "Proje" />
+//           <StatCard value = "8" label = "Ders" />
+//         </View>
+
+//         <Text style = {styles.sectionTitle}>Hakkımda</Text>
+//         <Text style = {styles.paragraph}>
+//           Mobil uyglama geliştirme ve yapay zekâ alanlarında çalışıyorum. React Native ile arayüz tasarlıyorum.
+//         </Text>
+
+//         <Text style = {styles.sectionTitle}>İlgi Alanları</Text>
+//         <View style = {styles.badges}>
+//           {interests.map((item) => (
+//             <Badge key = {item} label = {item} />
+//           ))}
+//         </View>
+
+//         <AppButton title = "Profili Düzenle"
+//         onPress = {() => console.log("Profil Düzenleniyor.")}
+//         />
+
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// }
+
+// export default function App() {
+//   return (
+//     <SafeAreaProvider>
+//       <ProfileScreen />
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create ({
+//   safe: {
+//     flex: 1,
+//     backgroundColor: "#F5F7FA"
+//   },
+
+//   content: {
+//     padding: 20,
+//     paddingBottom: 32
+//   },
+
+//   header: {
+//     alignItems: "center",
+//     marginBottom: 20
+//   },
+
+//   avatar: {
+//     width: 100,
+//     height: 100,
+//     borderRadius: 50,
+//     marginBottom: 12,
+//     backgroundColor: "#E3E7ED"
+//   },
+
+//   name: {
+//     fontSize: 24,
+//     fontWeight: "700",
+//     color: "#202124"
+//   },
+
+//   department: {
+//     fontSize: 14,
+//     color: "#666666",
+//     marginTop: 2
+//   },
+
+//   stats: {
+//     flexDirection: "row",
+//     marginBottom: 20
+//   },
+
+//   statCard: {
+//     flex: 1,
+//     backgroundColor: "#FFFFFF",
+//     borderRadius: 16,
+//     paddingVertical: 16,
+//     alignItems: "center",
+//     marginHorizontal: 4
+//   },
+
+//   statValue: {
+//     fontSize: 20,
+//     fontWeight: "700",
+//     color: "#7B1E3A"
+//   },
+
+//   statLabel: {
+//     fontSize: 12,
+//     color: "#666666",
+//     marginTop: 2
+//   },
+
+//   sectionTitle: {
+//     fontSize: 18,
+//     fontWeight: "600",
+//     color: "#202124",
+//     marginBottom: 8
+//   },
+
+//   paragraph: {
+//     fontSize: 14,
+//     lineHeight: 20,
+//     marginBottom: 20
+//   },
+
+//   badges: {
+//     flexDirection: "row",
+//     flexWrap: "wrap", // Sığmayan elemanlar alt satıra geçer. Taşma engellenir. 
+//     marginBottom: 24
+//   },
+
+//   badge: {
+//     backgroundColor: "#E8EDF5",
+//     borderRadius: 999,
+//     paddingHorizontal: 12,
+//     paddingVertical: 6,
+//     marginRight: 8,
+//     marginBottom: 8
+//   },
+
+//   badgeText: {
+//     fontSize: 13,
+//     color: "#31507A"
+//   },
+
+//   button: {
+//     backgroundColor: "7B1E3A",
+//     borderRadius: 12,
+//     paddingVertical: 14,
+//     alignItems: "center"
+//   },
+
+//   buttonText: {
+//     color: "#FFFFFF",
+//     fontSize: 16,
+//     fontWeight: "600"
+//   }
+// });
+
+// Hafta 4 Uygulama
+// Kullanıcı Kayıt Formu
+
+// import { useState } from "react";
+// import {Alert, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+// interface AppButtonProps {
+//   title: string;
+//   onPress: () => void;
+// }
+
+// function AppButton({title, onPress} : AppButtonProps) {
+//   return (
+//     <Pressable style = {styles.button} onPress = {onPress}>
+//       <Text style = {styles.buttonText}>{title}</Text>
+//     </Pressable>
+//   );
+// }
+
+// function RegisterForm() {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [city, setCity] = useState("");
+//   const [error, setError] = useState("");
+
+//   const saveUser = () => {
+//     if(name.trim() === "") {
+//       setError("Ad soyad alanı boş bırakılamaz.")
+//       return;
+//     }
+//     if(email.trim() === "") {
+//       setError("E-posta alanı boş bırakılamaz.")
+//       return;
+//     }
+//     if(city.trim() === "") {
+//       setError("Şehir alanı boş bırakılamaz.")
+//       return;
+//     }
+
+//     setError("");
+
+//     Alert.alert("Başarılı", name.trim() + " kaydedildi");
+
+//     setName("");
+//     setEmail("");
+//     setCity("");
+//   };
+
+//   return(
+//     <SafeAreaView
+//       style = {styles.safe}
+//       edges = {["top", "bottom"]}
+//     >
+//       <ScrollView contentContainerStyle = {styles.content}>
+
+//         <Text style = {styles.title}>Kullanıcı Kayıt Formu</Text>
+
+//         <Text style = {styles.label}>Ad Soyad</Text>
+//         <TextInput style = {styles.input} placeholder = "Örn: Fatih Talu" value = {name} onChangeText = {setName}
+//         />
+
+//         <Text style = {styles.label}>E-posta</Text>
+//         <TextInput style = {styles.input} placeholder = "ornek@gmail.com" keyboardType = "email-address" autoCapitalize= "none" value = {email} onChangeText = {setEmail}
+//         />
+
+//         <Text style = {styles.label}>Şehir</Text>
+//         <TextInput style = {styles.input} placeholder = "Örn: İstanbul" value = {city} onChangeText = {setCity}
+//         />
+
+//         {error !== "" && (
+//           <Text style = {styles.error}>{error}</Text>
+//         )}
+
+//         <AppButton title = "Kaydet" onPress = {saveUser} />
+
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// }
+
+// export default function App() {
+//   return (
+//     <SafeAreaProvider>
+//       <RegisterForm />
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+// safe: {
+// flex: 1,
+// backgroundColor: '#F5F7FA'
+// },
+
+// content: {
+// padding: 20
+// },
+
+// title: {
+// fontSize: 22,
+// fontWeight: '700',
+// color: '#202124',
+// marginBottom: 20
+// },
+
+// label: {
+// fontSize: 14,
+// fontWeight: '600',
+// color: '#444444',
+// marginBottom: 6
+// },
+
+// input: {
+// borderWidth: 1,
+// borderColor: '#CCCCCC',
+// borderRadius: 10,
+// backgroundColor: '#FFFFFF',
+// padding: 12,
+// fontSize: 16,
+// marginBottom: 14
+// },
+
+// error: {
+// color: '#C62828',
+// fontSize: 13,
+// marginBottom: 10
+// },
+
+// button: {
+// backgroundColor: '#7B1E3A',
+// borderRadius: 12,
+// paddingVertical: 14,
+// alignItems: 'center',
+// marginTop: 6
+// },
+
+// buttonText: {
+// color: '#FFFFFF',
+// fontSize: 16,
+// fontWeight: '600'
+// }
+// });
+
+// Hafta 5 Uygulama
+// Ürün kataloğu
+
+// import { useState } from "react";
+// import {FlatList, Image, Pressable, ScrollView, StyleSheet, Text, TextInput, View} from "react-native";
+// import {SafeAreaProvider, SafeAreaView} from "react-native-safe-area-context";
+
+// interface Product {
+//   id: number;
+//   name: string;
+//   category: string;
+//   price: number;
+//   image: string;
+// }
+
+// const LOGO = "https://reactnative.dev/img/tiny_logo.png";
+
+// const products: Product[] = [
+//   { id: 1, name: "Laptop", category: "Elektronik", price: 45000, image: LOGO},
+//   { id: 2, name: "Kablosuz Kulaklık", category: "Elektronik", price: 1200, image: LOGO},
+//   { id: 3, name: 'Akıllı Saat',category: 'Elektronik',price: 3500, image: LOGO },
+//   { id: 4, name: 'TypeScript Kitabı', category: 'Kitap',price: 750, image: LOGO },
+//   { id: 5, name: 'Temiz Kod',category: 'Kitap',price: 450, image: LOGO },
+//   { id: 6, name: 'Veri Yapıları',category: 'Kitap', price: 620, image: LOGO },
+//   { id: 7, name: 'Pamuklu Tişört',category: 'Giyim',price: 350, image: LOGO },
+//   { id: 8, name: 'Spor Ayakkabı',category: 'Giyim',price: 2100, image: LOGO },
+//   { id: 9, name: 'Masa Lambası',category: 'Ev',price: 480, image: LOGO },
+//   { id: 10, name: 'Kahve Makinesi',category: 'Ev',price: 2750, image: LOGO }
+// ];
+
+// const categories: string[] = [
+//   "Tümü",
+//   "Elektronik",
+//   "Kitap",
+//   "Giyim",
+//   "Ev"
+// ];
+
+// interface ProductCardProps {
+//   product: Product;
+// }
+
+// function ProductCard({product} : ProductCardProps) {
+//   return (
+//     <View style = {styles.card}>
+//       <Image style = {styles.thumb} source = {{ uri: product.image}}
+//       />
+//       <View style = {styles.cardInfo}>
+//         <Text style = {styles.name}>{product.name}</Text>
+//         <Text style = {styles.category}>{product.category}</Text>
+//         <Text style = {styles.price}>{product.price} TL</Text>
+//       </View>
+//     </View>
+//   );
+// }
+
+// interface CategoryButtonProps {
+//   title: string;
+//   selected: boolean;
+//   onPress: () => void;
+// }
+
+// function CategoryButton({title, selected, onPress} : CategoryButtonProps) {
+
+//   return (      //      ----- ilk eleman ----- / -------------- ikinci eleman ------------ 
+//     <Pressable style = {[styles.categoryButton, selected && styles.selectedCategoryButton]} // style dizisi
+//     // Üstteki satırda ilk eleman HER DURUMDA aktiftir. selected ve sonrası ikinci elemandır ve selected TRUE ise görünür. Ama bu demek değildir ki ilk eleman görünmeyi bırakır;
+//     // ilk eleman her vakit görünür ancak selected TRUE olursa ikisi birlikte görünür. Yeni görünüm birleştirilir.
+//     onPress = {onPress} >
+//       <Text style = {[styles.categoryText, selected && styles.selectedCategoryText]}
+//       >{title}</Text>
+//     </Pressable>
+//   );
+// }
+
+// const Separator = () => (
+//   <View style = {styles.separator} />
 // );
 
-// return (
-//   <FlatList
-//     data = {tasks}
-//     renderItem={}
-// )
+// function CatalogScreen() {
+//   const [searchText, setSearchText] = useState("");
+//   const [selectedCategory, setSelectedCategory] = useState("Tümü"); // Varsayılan
+
+//   const query = searchText.trim().toLowerCase();
+
+//   const filteredProducts = products.filter((product) => {
+//     const matchesSearch = product.name.toLowerCase().includes(query);
+
+//     const matchesCategory = selectedCategory === "Tümü" || product.category === selectedCategory;
+
+//     return ( matchesSearch && matchesCategory);
+//   });
+
+//   const clearFilters = () => {
+//     setSearchText("");
+//     setSelectedCategory("Tümü");
+//   };
+
+//   const renderProduct = ({item} : {item: Product;}) => <ProductCard product = {item} />;
+
+//   return (
+//     <SafeAreaView
+//       style = {styles.safe} edges = {["top", "bottom"]}
+//     >
+//       <View style = {styles.content}>
+//         <Text style = {styles.title}>
+//           Ürünler
+//         </Text>
+
+//         <TextInput style = {styles.input} placeholder="Ürün ara..." value = {searchText} onChangeText = {setSearchText}
+//         />
+
+//         <ScrollView horizontal showsHorizontalScrollIndicator = {false} style = {styles.categoryRow} contentContainerStyle = {styles.categoryContent}
+//         >
+//           {categories.map((category) => (
+//             <CategoryButton
+//             key = {category}
+//             title = {category}
+//             selected = {
+//               category === selectedCategory
+//             }
+//             onPress={() =>
+//               setSelectedCategory(category)
+//             }
+//           />
+//           ))}
+//         </ScrollView>
+
+//         <View style = {styles.resultRow}>
+//           <Text style = {styles.resultText}>{filteredProducts.length} ürün bulundu </Text>
+//           <Pressable onPress = {clearFilters}>
+//             <Text style = {styles.clearText}>
+//               Filtreleri temizle
+//             </Text>
+//           </Pressable> 
+//         </View>
+
+//         <FlatList
+//           data = {filteredProducts}
+//           renderItem = {renderProduct}
+//           keyExtractor = {(item) => item.id.toString()}
+//           ItemSeparatorComponent = {Separator}
+//           showsVerticalScrollIndicator = {false}
+//           contentContainerStyle = {styles.listContent}
+//           ListEmptyComponent = {
+//             <View style = {styles.emptyBox}>
+//               <Text style = {styles.emptyTitle}>
+//                 Aramanıza uygun ürün bulunamadı.
+//               </Text>
+//               <Text style = {styles.emptyHint}>
+//                 Arama ifadesini kısaltmayı veya kategoriyi değiştirmeyi deneyiniz.
+//               </Text>
+//             </View>
+//           }
+//         />
+//       </View>
+//     </SafeAreaView>
+//   );
+// }
+
+// export default function App() {
+//   return (
+//     <SafeAreaProvider>
+//       <CatalogScreen />
+//     </SafeAreaProvider>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+// safe: {
+// flex: 1,
+// backgroundColor: '#F5F7FA'
+// },
+// content: {
+// flex: 1,
+// paddingHorizontal: 20,
+// paddingTop: 8
+// },
+// title: {
+// fontSize: 24,
+// fontWeight: '700',
+// color: '#202124',
+// marginBottom: 14
+// },
+// input: {
+// borderWidth: 1,
+// borderColor: '#CCCCCC',
+// borderRadius: 10,
+// backgroundColor: '#FFFFFF',
+// padding: 12,
+// fontSize: 16,
+// marginBottom: 12
+// },
+// categoryRow: {
+// flexGrow: 0,
+// marginBottom: 12
+// },
+// categoryContent: {
+// paddingRight: 8
+// },
+// categoryButton: {
+// backgroundColor: '#EEF1F5',
+// borderRadius: 20,
+// paddingVertical: 8,
+// paddingHorizontal: 16,
+// marginRight: 8,
+// },
+// selectedCategoryButton: {
+// backgroundColor: '#7B1E3A'
+// },
+// categoryText: {
+// fontSize: 14,
+// color: '#333333'
+// },
+// selectedCategoryText: {
+// color: '#FFFFFF',
+// fontWeight: '600',
+// marginBottom: 10,
+// },
+// resultRow: {
+// flexDirection: 'row',
+// justifyContent: 'space-between',
+// alignItems: 'center',
+// marginBottom: 10
+// },
+// resultText: {
+// fontSize: 13,
+// color: '#666666'
+// },
+// clearText: {
+// fontSize: 13,
+// fontWeight: '600',
+// color: '#7B1E3A'
+// },
+// listContent: {
+// paddingBottom: 24
+// },
+// separator: {
+// height: 12
+// },
+// card: {
+// flexDirection: 'row',
+// alignItems: 'center',
+// backgroundColor: '#FFFFFF',
+// borderRadius: 12,
+// padding: 12
+// },
+// thumb: {
+// width: 56,
+// height: 56,
+// borderRadius: 10,
+// backgroundColor: '#EEF1F5',
+// },
+// cardInfo: {
+// flex: 1,
+// marginLeft: 12
+// },
+// name: {
+// fontSize: 16,
+// fontWeight: '600',
+// color: '#202124'
+// },
+// category: {
+// fontSize: 13,
+// color: '#888888',
+// marginTop: 2
+// },
+// price: {
+// fontSize: 15,
+// fontWeight: '700',
+// color: '#7B1E3A',
+// marginTop: 4
+// },
+// emptyBox: {
+// paddingTop: 40,
+// paddingHorizontal: 20
+// },
+// emptyTitle: {
+// textAlign: 'center',
+// fontSize: 15,
+// fontWeight: '600',
+// color: '#666666'
+// },
+// emptyHint: {
+// textAlign: 'center',
+// fontSize: 13,
+// color: '#999999',
+// marginTop: 6
+// }
+// });
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
-  },
-  title: {
-    fontWeight: "bold",
-    fontSize: 13,
-    color: "black",
-  },
-  taskBox: {
-    height: 15,
-    width: 150,
-    backgroundColor: "blue",
-    borderRadius: 13
-  },
-  completeTask: {
-    height: 10,
-    width: 50,
-    borderRadius: 15,
-    color: "yellow"
-  }
+// Vize
 
-})
+// Verinin şekli ne?
+// interface Product {
+//   id: number;
+//   name: string;
+//   price: number;
+//   inStock: boolean;
+//   description?: string; // Optional
+// }
+
+
+// // Değişen veri nerede tutulacak?
+// import { useState } from "react";
+
+// const [count, setCount] = useState(0);
+// const [name, setName] = useState("");
+// const [items, setItems] = useState<Product[]>([]);
+// const [error, setError] = useState<string | null>(null);
+
+// Component dışarından ne alacak?
+
+// interface ProductCardProps {
+//   product: Product;
+//   onPress : () => void;
+// }
+
+// Tekrarlanan görünüm
+
+// function ProductCard({product, onPress} : ProductCardProps) {
+//   return (
+//     <Pressable style = {styles.card} onPress = {onPress}>
+//       <Text style = {styles.name}>{product.name}</Text>
+//       <Text style = {styles.price}>{product.price} TL</Text>
+//     </Pressable>
+//   );
+// }
+
+// Kullanıcından metin almak
+
+// const [taskText, setTaskText] = useState("");
+
+// <TextInput
+//   value = {taskText}
+//   onChangeText = {setTaskText}
+//   placeholder = "Görev yazınınız"
+// />
+
+// Array'e kayıt ekleme
+
+// const addTask = () => {
+//   if(taskText.trim() == ""){
+//     setError("görev alanı boş olamaz!")
+//     return;
+//   }
+//   const newTask: Task = {id: Date.now(), title: taskText.trim(), completed: false};
+//   setTasks([...tasks, newTask]);
+//   setTaskText("");
+//   setError("");
+// };
+
+// filter ile silme
+
+// const deleteTask = (id: number) => {
+//   setTask(tasks.filter(task => task.id !== id));
+// }; // tasks array'ini set'liyoruz. girilen id hariç geri kalanını alıyoruz.
+
+// map ile güncelleme
+
+// const toggleTask = (id: number) => {
+//   setTasks(
+//     tasks.map(task => 
+//       task.id === id ? {...task, completed: !task.completed} : task
+//     )
+//   );
+// };
+
+// FlatList  data +  renderItem + keyExtractor
+
+// <FlatList
+//   data = {products}
+//   keyExtractor = {{item} => item.id.toString()}
+//   renderItem = {({ item }) => <ProductCard product = {item} onPress = {() => goToDetail(item)} />}
+//   ListEmptyComponent = {<Text>Sonuç bulunamadı.</Text>}
+
+// Büyük-küçük harf duyarsız arama
+
+// const filteredProducts = products.filter(product =>
+//   product.name.toLowerCase().includes(searchText.trim().toLowerCase())
+// );
+
+// Arama && kategori
+
+// const filteredProducts = products.filter(product => {
+//   const matchesSearch = product.name.toLowerCase().includes(searchText.trim().toLowerCase());
+//   const matchesCategory = selectedCategory === "Tümü" || product.category === selectedCategory;
+//   return matchesSearch && matchesCategory;
+// })
+
+// import { useRouter } from "expo-router";
+
+// const router = useRouter();
+
+// router.push("/products"); // sabit route
+
+// router.push({           // dinamik route
+//   pathname: "/product/[id]",
+//     params: {id: product.id} // params, bir ekrandan diğerine gönderdiğin bilgilerdir. Ekrana "seni açıyorum, bu bilgiyi de yanında götür" demenin yolu.
+// });
+
+// router.back(); // geri dön
+
+// Route parametresini oku
+
+// import { useLocalSearchParams } from "expo-router";
+// const { id } = useLocalSearchParams<{ id: string}>();
+
+// // Tek kaydı bul, yoksa kontrol et
+// const product = products.find(item => item.id === Number(id));
+
+// if(!product) {
+//   return <Text>Ürün bulunamadı.</Text>
+// }
+
+// const loadProducts = async () => {
+//   // içinde await kullanılabilir
+// };
+
+
+// // fetch GET isteği
+// const response = await fetch(API_URL);
+
+
+// // response.ok HTTP başarılı mı?
+// if(!response.ok) {
+//   throw new Error("HTTP ${response.status}";
+// }
+
+// // JSON -> JavaScript
+// const data = await Response.json();
+// setProducts(data);  // Yanıt düz array ise
+
+// try {
+//   setLoading(true);
+//   setError(null);
+//   // fetch + ok kontrolü + json + setState
+// } catch (e) {
+//   setError("Veriler alınamadı.");
+// } finally { // hata olsun olmasın çalışır.
+//   setLoading(false);
+// }
+
+// useEffect // Ekran açılınca bir kez çalıştır.
+
+// import { useEffect } from "react";
+
+// useEffect(() => {
+//   loadProducts();
+// } []);
+
+// JSON taşınan metin. Anahtarlar çift tırnaklı.
+
+// const products = [
+  // {id: 1, name: urun1, price: 100},
+  // {id: 2, name: urun2, price: 500},
+  // {id: 3, name: urun3, price: 499},
+  // {id: 4, name: urun4, price: 1000}
+// ]
+
+// const product = products.find(p => p.id === 3);
+// if(product){
+  // console.log(product.name);
+// }
+// const products: Product[] = [
+
+// const ucuzUrunler = products.filter(p => p.price <500).map(p => p.name);
+
+
+
